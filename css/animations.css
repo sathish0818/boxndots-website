@@ -1,0 +1,32 @@
+/* ==========================================================================
+   BoxnDots — Keyframes & motion utilities
+   ========================================================================== */
+
+@keyframes pulse-dot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.5; } }
+@keyframes pulse-glow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.12); } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+/* logo loader — box drops down, dot lifts up (opposite phases) */
+@keyframes ld-box { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+@keyframes ld-dot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+@keyframes marquee { to { transform: translateX(calc(-50% - var(--gap) / 2)); } }
+@keyframes scroll-wheel { 0% { transform: translate(-50%, 0); opacity: 1; } 70% { transform: translate(-50%, 12px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 0; } }
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+@keyframes float-y-alt { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(14px) rotate(3deg); } }
+@keyframes blob-morph { 0%, 100% { border-radius: 42% 58% 63% 37% / 42% 45% 55% 58%; } 33% { border-radius: 62% 38% 45% 55% / 58% 62% 38% 42%; } 66% { border-radius: 38% 62% 58% 42% / 48% 38% 62% 52%; } }
+@keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 220% 50%; } }
+
+.float { animation: float-y 7s ease-in-out infinite; }
+.float-alt { animation: float-y-alt 8s ease-in-out infinite; }
+.float-slow { animation: float-y 11s ease-in-out infinite; }
+.blob { animation: blob-morph 16s ease-in-out infinite, float-y 12s ease-in-out infinite; }
+.animated-gradient { background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
+
+.reveal-up { opacity: 0; transform: translateY(40px); }
+.reveal-in { opacity: 1 !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .float, .float-alt, .float-slow, .blob, .marquee-track { animation: none !important; }
+}
