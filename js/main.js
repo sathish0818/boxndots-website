@@ -81,7 +81,7 @@
   /* -------- Team -------- */
   const TEAM = [
     { name: 'Archana Devi', role: 'Founder', img: 1 },
-    { name: 'Balaji G', role: 'Creative Manager', img: 2 },
+    { name: 'Balaji G', role: 'Creative Head', img: 2 },
     { name: 'Krish', role: 'Digital Marketing Manager', img: 3 },
     { name: 'Suma Jayashri', role: 'Visual Designer', img: 4 },
   ];
