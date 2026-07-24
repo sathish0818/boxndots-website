@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B1B3A" />
+
+  <title>BoxnDots — Creative & Branding Studio</title>
+  <meta name="description" content="BoxnDots is an independent creative & branding studio. We build brands people remember — identity, design, motion, digital and strategy." />
+  <meta name="keywords" content="branding studio, creative agency, brand identity, graphic design, motion, UX UI, digital marketing, SEO, creative strategy, BoxnDots" />
+  <meta name="author" content="BoxnDots" />
+  <link rel="canonical" href="https://boxndots.example.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BoxnDots — Creative & Branding Studio" />
+  <meta property="og:description" content="We build brands people remember." />
+  <meta property="og:image" content="assets/images/portfolio/project-1.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="assets/vectors/favicon.svg?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"BoxnDots","slogan":"We build brands people remember.","description":"Independent creative & branding studio.","url":"https://boxndots.example.com/","logo":"assets/vectors/logo-mark.svg","sameAs":["https://x.com/boxndots","https://instagram.com/boxndots","https://linkedin.com/company/boxndots"]}
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-mark">
+        <svg viewBox="0 0 34 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="BoxnDots loading">
+          <rect class="ld-box" x="0" y="8.6348" width="33.8837" height="28.7406" fill="currentColor"/>
+          <circle class="ld-dot" cx="26.5755" cy="47.5092" r="7.3082" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="loader-bar"><span id="loader-fill"></span></div>
+      <div class="loader-meta"><span>BoxnDots — Creative &amp; Branding Studio</span><span class="loader-count"><span id="loader-percent">0</span>%</span></div>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor-ring" id="cursor-ring"><span class="cursor-label" id="cursor-label">View</span></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div id="scroll-progress"></div>
+  <canvas id="scene-canvas" aria-hidden="true"></canvas>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="#hero" class="nav-brand" aria-label="BoxnDots — home" data-cursor>
+      <svg class="brand-logo" viewBox="0 0 88 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BoxnDots">
+        <path d="M33.8837 8.63479H0V37.3754H33.8837V8.63479Z" fill="currentColor"/>
+        <path d="M26.5755 54.819C30.6117 54.819 33.8837 51.5463 33.8837 47.5092C33.8837 43.4722 30.6117 40.1995 26.5755 40.1995C22.5392 40.1995 19.2672 43.4722 19.2672 47.5092C19.2672 51.5463 22.5392 54.819 26.5755 54.819Z" fill="currentColor"/>
+        <path d="M38.908 31V10.2948H44.3015C45.1877 10.2948 46.0227 10.3629 46.8066 10.4993C47.6076 10.6356 48.3148 10.8997 48.9283 11.2917C49.5417 11.6666 50.0189 12.2119 50.3597 12.9277C50.7176 13.6264 50.8965 14.5551 50.8965 15.7139C50.8965 16.5489 50.7687 17.2562 50.5131 17.8356C50.2745 18.3979 49.9252 18.8495 49.4651 19.1904C49.022 19.5312 48.4852 19.7612 47.8547 19.8805C48.6556 19.9828 49.3287 20.2469 49.8741 20.673C50.4194 21.0819 50.8284 21.6358 51.101 22.3345C51.3907 23.0332 51.5356 23.8767 51.5356 24.8651C51.5356 25.9387 51.3907 26.8675 51.101 27.6514C50.8284 28.4182 50.4279 29.0488 49.8996 29.543C49.3713 30.0372 48.7152 30.4036 47.9313 30.6421C47.1645 30.8807 46.2783 31 45.2729 31H38.908ZM43.4836 27.8047H44.4549C45.4604 27.8047 46.1505 27.5491 46.5254 27.0379C46.9174 26.5266 47.1134 25.7768 47.1134 24.7884C47.1134 24.0045 47.0282 23.3825 46.8577 22.9224C46.6873 22.4623 46.4061 22.13 46.0142 21.9255C45.6222 21.704 45.094 21.5932 44.4293 21.5932H43.4836V27.8047ZM43.4836 18.5769H44.3782C45.0769 18.5769 45.6052 18.4746 45.9631 18.2701C46.3209 18.0486 46.5595 17.7333 46.6788 17.3243C46.8151 16.9153 46.8833 16.4211 46.8833 15.8417C46.8833 15.2964 46.7811 14.8448 46.5766 14.4869C46.3891 14.112 46.0994 13.8309 45.7074 13.6434C45.3325 13.4559 44.8554 13.3622 44.276 13.3622H43.4836V18.5769ZM59.866 31.3067C58.3152 31.3067 57.0883 31.0341 56.1851 30.4888C55.2819 29.9434 54.6343 29.1595 54.2424 28.1371C53.8504 27.1146 53.6544 25.8961 53.6544 24.4817V16.7875C53.6544 15.3561 53.8504 14.1376 54.2424 13.1322C54.6343 12.1267 55.2819 11.3599 56.1851 10.8316C57.0883 10.2863 58.3152 10.0136 59.866 10.0136C61.4338 10.0136 62.6693 10.2863 63.5725 10.8316C64.4927 11.3599 65.1488 12.1267 65.5408 13.1322C65.9327 14.1376 66.1287 15.3561 66.1287 16.7875V24.4817C66.1287 25.8961 65.9327 27.1146 65.5408 28.1371C65.1488 29.1595 64.4927 29.9434 63.5725 30.4888C62.6693 31.0341 61.4338 31.3067 59.866 31.3067ZM59.866 28.0604C60.3432 28.0604 60.6925 27.9411 60.914 27.7025C61.1356 27.4639 61.2804 27.1572 61.3486 26.7823C61.4168 26.4074 61.4508 26.0239 61.4508 25.632V15.6628C61.4508 15.2538 61.4168 14.8704 61.3486 14.5125C61.2804 14.1376 61.1356 13.8309 60.914 13.5923C60.6925 13.3537 60.3432 13.2344 59.866 13.2344C59.4229 13.2344 59.0906 13.3537 58.8691 13.5923C58.6475 13.8309 58.5027 14.1376 58.4345 14.5125C58.3664 14.8704 58.3323 15.2538 58.3323 15.6628V25.632C58.3323 26.0239 58.3578 26.4074 58.409 26.7823C58.4771 27.1572 58.6135 27.4639 58.818 27.7025C59.0395 27.9411 59.3888 28.0604 59.866 28.0604ZM67.1342 31L71.1474 19.855L67.3131 10.2948H71.6331L73.9081 15.8929L75.7486 10.2948H79.5573L75.9275 21.0564L79.9663 31H75.6719L73.1413 24.814L70.9174 31H67.1342Z" fill="currentColor"/>
+        <path d="M39.2914 60.4025V39.6973H43.8159C45.1962 39.6973 46.2698 39.9614 47.0367 40.4897C47.8035 41.018 48.3403 41.7337 48.6471 42.6369C48.9538 43.5401 49.1072 44.5455 49.1072 45.6532V54.242C49.1072 55.4179 48.9538 56.4745 48.6471 57.4117C48.3403 58.332 47.8121 59.0647 47.0622 59.6101C46.3295 60.1383 45.2899 60.4025 43.9437 60.4025H39.2914ZM40.6717 59.3033H43.867C44.9917 59.3033 45.8267 59.0647 46.3721 58.5876C46.9174 58.1104 47.2753 57.4799 47.4457 56.696C47.6161 55.8951 47.7013 55.0259 47.7013 54.0887V45.7555C47.7013 44.75 47.599 43.8809 47.3945 43.1481C47.19 42.3983 46.8066 41.8274 46.2443 41.4355C45.6819 41.0265 44.8724 40.822 43.8159 40.822H40.6717V59.3033ZM57.1746 60.6837C55.8283 60.6837 54.7803 60.4195 54.0305 59.8912C53.2977 59.3459 52.7865 58.6131 52.4968 57.6929C52.2071 56.7556 52.0622 55.6991 52.0622 54.5232V45.4743C52.0622 44.2984 52.2156 43.2589 52.5223 42.3557C52.8291 41.4525 53.3488 40.7453 54.0816 40.2341C54.8314 39.7228 55.8624 39.4672 57.1746 39.4672C58.4868 39.4672 59.5093 39.7228 60.242 40.2341C60.9919 40.7453 61.5201 41.4525 61.8269 42.3557C62.1336 43.2589 62.287 44.2984 62.287 45.4743V54.5488C62.287 55.7246 62.1422 56.7727 61.8524 57.6929C61.5627 58.6131 61.043 59.3459 60.2932 59.8912C59.5604 60.4195 58.5209 60.6837 57.1746 60.6837ZM57.1746 59.5334C58.163 59.5334 58.9213 59.3374 59.4496 58.9455C59.9949 58.5535 60.3699 58.0082 60.5743 57.3095C60.7788 56.5937 60.8811 55.7672 60.8811 54.83V45.2698C60.8811 44.3325 60.7788 43.5145 60.5743 42.8158C60.3699 42.1171 60.0035 41.5803 59.4752 41.2054C58.9469 40.8135 58.18 40.6175 57.1746 40.6175C56.1862 40.6175 55.4193 40.8135 54.874 41.2054C54.3457 41.5803 53.9794 42.1171 53.7749 42.8158C53.5704 43.5145 53.4681 44.3325 53.4681 45.2698V54.83C53.4681 55.7672 53.5704 56.5937 53.7749 57.3095C53.9794 58.0082 54.3457 58.5535 54.874 58.9455C55.4193 59.3374 56.1862 59.5334 57.1746 59.5334ZM68.4123 60.4025V40.822H64.2713V39.6973H73.8314V40.822H69.7926V60.4025H68.4123ZM80.4025 60.6581C79.3118 60.6581 78.4086 60.4366 77.6929 59.9935C76.9942 59.5504 76.4574 58.9284 76.0825 58.1275C75.7246 57.3265 75.5031 56.3807 75.4179 55.2901L76.6193 54.9067C76.7386 55.8098 76.9175 56.6108 77.1561 57.3095C77.4117 58.0082 77.7951 58.5535 78.3064 58.9455C78.8176 59.3204 79.5248 59.5078 80.428 59.5078C81.4505 59.5078 82.2515 59.2522 82.8309 58.741C83.4273 58.2297 83.7255 57.3776 83.7255 56.1848C83.7255 55.2816 83.487 54.4721 83.0098 53.7564C82.5497 53.0236 81.8936 52.2397 81.0415 51.4047L77.2583 47.647C76.6278 46.9995 76.1677 46.3519 75.878 45.7043C75.5883 45.0568 75.4434 44.3922 75.4434 43.7105C75.4434 42.3472 75.861 41.2991 76.696 40.5664C77.548 39.8336 78.6472 39.4672 79.9935 39.4672C80.6922 39.4672 81.3227 39.5609 81.8851 39.7484C82.4474 39.9188 82.9331 40.2085 83.3421 40.6175C83.7681 41.0094 84.1004 41.5377 84.339 42.2023C84.5776 42.867 84.731 43.6849 84.7991 44.6563L83.6233 44.9375C83.5551 43.9661 83.3932 43.1567 83.1376 42.5091C82.882 41.8615 82.5071 41.3844 82.0129 41.0776C81.5187 40.7538 80.8541 40.5919 80.019 40.5919C79.0818 40.5919 78.2979 40.8305 77.6673 41.3077C77.0368 41.7848 76.7215 42.5517 76.7215 43.6083C76.7215 44.1365 76.8238 44.6478 77.0283 45.142C77.2498 45.6362 77.6503 46.173 78.2297 46.7524L81.9618 50.4333C82.7968 51.2513 83.5125 52.1289 84.109 53.0662C84.7224 53.9864 85.0292 55.0004 85.0292 56.1081C85.0292 57.1476 84.8332 58.0082 84.4413 58.6898C84.0493 59.3544 83.504 59.8486 82.8053 60.1724C82.1066 60.4962 81.3057 60.6581 80.4025 60.6581Z" fill="currentColor"/>
+        <path d="M60.8193 37.7443L56.836 33.641C56.492 33.2971 56.2401 32.9611 56.0801 32.6332C55.9201 32.3052 55.8402 31.9573 55.8402 31.5893C55.8402 31.1654 55.9321 30.7935 56.1161 30.4735C56.3081 30.1536 56.572 29.9016 56.908 29.7177C57.2439 29.5337 57.6279 29.4417 58.0598 29.4417C58.3637 29.4417 58.6397 29.4857 58.8876 29.5737C59.1436 29.6617 59.3716 29.7857 59.5715 29.9456C59.7715 30.0976 59.9395 30.2856 60.0754 30.5095L59.6315 30.9295C59.4396 30.6415 59.2156 30.4215 58.9596 30.2696C58.7037 30.1096 58.4077 30.0296 58.0718 30.0296C57.5919 30.0296 57.2039 30.1736 56.908 30.4615C56.612 30.7495 56.4641 31.1334 56.4641 31.6133C56.4641 31.9253 56.532 32.2092 56.668 32.4652C56.804 32.7212 57.032 33.0131 57.3519 33.3411L61.6112 37.7443H60.8193ZM57.6039 37.8643C57.0999 37.8643 56.652 37.7603 56.2601 37.5524C55.8761 37.3444 55.5722 37.0604 55.3482 36.7005C55.1323 36.3406 55.0243 35.9246 55.0243 35.4527C55.0243 34.9488 55.1603 34.4849 55.4322 34.0609C55.7042 33.629 56.0761 33.3011 56.548 33.0771L56.872 33.473C56.504 33.649 56.2041 33.917 55.9721 34.2769C55.7482 34.6288 55.6362 35.0208 55.6362 35.4527C55.6362 35.8126 55.7202 36.1286 55.8881 36.4005C56.0641 36.6725 56.3001 36.8885 56.596 37.0484C56.9 37.2004 57.2439 37.2764 57.6279 37.2764C58.0678 37.2764 58.4637 37.1764 58.8157 36.9765C59.1676 36.7765 59.4356 36.5085 59.6195 36.1726L60.0275 36.6165C59.8755 36.8645 59.6715 37.0844 59.4156 37.2764C59.1676 37.4604 58.8876 37.6043 58.5757 37.7083C58.2718 37.8123 57.9478 37.8643 57.6039 37.8643Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="#services" data-cursor><span>Services</span></a>
+      <a href="#about" data-cursor><span>Studio</span></a>
+      <a href="#testimonials" data-cursor><span>Reviews</span></a>
+      <a href="#team" data-cursor><span>Team</span></a>
+      <a href="#contact" data-cursor><span>Contact</span></a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" data-cursor>
+        <span class="knob">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </button>
+      <a href="#contact" class="nav-cta magnetic" data-cursor>Start a project</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services">Services</a><a href="#about">Studio</a><a href="#testimonials">Reviews</a><a href="#team">Team</a><a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <h1 class="hero-statement">
+        <span class="line"><span data-hero-line>We build</span></span>
+        <span class="line"><span data-hero-line class="thin">brands</span></span>
+        <span class="line small"><span data-hero-line><em class="serif">people remember.</em></span></span>
+      </h1>
+
+      <div class="hero-bottom">
+        <div>
+          <p class="hero-sub">An independent creative &amp; branding studio — identity, design, motion, digital &amp; strategy for brands with big ambitions.</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary magnetic" data-cursor data-ripple>View our work
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="btn-arrow"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost magnetic" data-cursor>Start a project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Brand Identity</span><span>Motion</span><span>UX / UI</span><span>Digital</span><span>Strategy</span><span>SEO</span>
+        <span>Brand Identity</span><span>Motion</span><span>UX / UI</span><span>Digital</span><span>Strategy</span><span>SEO</span>
+      </div>
+    </div>
+
+    <!-- ABOUT / INTRO -->
+    <section id="about" class="intro">
+      <div class="container">
+        <span class="kicker" data-reveal>The studio</span>
+        <p class="intro-statement" data-words>We're a small team of designers, strategists and makers obsessed with craft — turning ambitious ideas into brands that <em class="serif">move people</em> and move markets.</p>
+        <div class="stats">
+          <div class="stat" data-reveal><span class="num"><span data-count="12">0</span><em>+</em></span><span class="label">Years of craft</span></div>
+          <div class="stat" data-reveal><span class="num"><span data-count="500">0</span><em>+</em></span><span class="label">Projects shipped</span></div>
+          <div class="stat" data-reveal><span class="num"><span data-count="98">0</span><em>%</em></span><span class="label">Client retention</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker" data-reveal>What we do</span>
+          <h2 data-reveal>Everything your <span class="serif">brand</span> needs.</h2>
+        </div>
+        <div class="svc-list" id="svc-list"></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testi">
+      <div class="container">
+        <span class="kicker" data-reveal style="display:block;text-align:center">Loved by founders</span>
+        <div class="testi-track" id="testi-track"></div>
+        <div class="testi-nav" id="testi-nav"></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+      <div class="container">
+        <div class="team-top">
+          <div class="section-head" style="margin-bottom:0">
+            <span class="kicker" data-reveal>The people</span>
+            <h2 data-reveal>our team</h2>
+          </div>
+          <div class="team-nav">
+            <button class="team-arrow" id="team-prev" aria-label="Previous team members" data-cursor><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="team-arrow" id="team-next" aria-label="Next team members" data-cursor><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="team-carousel"><div class="team-track" id="team-grid"></div></div>
+      </div>
+    </section>
+
+    <!-- CLIENTS (rolling strip) -->
+    <div class="client-roll" id="clients-strip" aria-label="Brands we work with">
+      <div class="client-roll-track" id="client-track"></div>
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <span class="kicker" data-reveal style="display:block;text-align:center">Start a project</span>
+        <div class="contact-huge" data-reveal>
+          <a href="mailto:hello@boxndots.com" data-cursor>Let's talk
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="contact-sub" data-reveal>Tell us about your brand. We reply within one business day — real humans, no bots.</p>
+        <div class="contact-row" data-reveal>
+          <a href="mailto:hello@boxndots.com" data-cursor>hello@boxndots.com</a>
+          <a href="tel:+917305799909" data-cursor>+91 73057 99909</a>
+          <a href="#" data-cursor>Remote-first · Worldwide</a>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate data-reveal>
+          <div class="field"><input type="text" id="cf-name" name="name" placeholder=" " required /><label for="cf-name">Your name</label><span class="error-msg">Please enter your name</span></div>
+          <div class="field"><input type="email" id="cf-email" name="email" placeholder=" " required /><label for="cf-email">Email address</label><span class="error-msg">Please enter a valid email</span></div>
+          <div class="field"><textarea id="cf-message" name="message" placeholder=" " required></textarea><label for="cf-message">Tell us about your project</label><span class="error-msg">Please add a short brief</span></div>
+          <button type="submit" class="btn btn-primary form-submit magnetic" data-cursor data-ripple>Send message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="btn-arrow"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-wordmark" aria-hidden="true">Boxn<span>Dots</span></div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <p style="color:var(--ink-soft);max-width:28ch;margin-bottom:0.4rem">Occasional notes on brand, craft &amp; the studio.</p>
+        <form class="footer-news" id="news-form">
+          <input type="email" id="news-email" placeholder="Your email" aria-label="Email" required />
+          <button type="submit" aria-label="Subscribe" data-cursor data-ripple><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+        <p class="form-status" id="news-status" style="text-align:left"></p>
+      </div>
+      <div class="footer-col">
+        <h5>Sitemap</h5>
+        <a href="#services" data-cursor>Services</a><a href="#about" data-cursor>Studio</a><a href="#testimonials" data-cursor>Reviews</a><a href="#team" data-cursor>Team</a><a href="#contact" data-cursor>Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Social</h5>
+        <a href="#" data-cursor>Instagram</a><a href="#" data-cursor>X / Twitter</a><a href="#" data-cursor>LinkedIn</a><a href="#" data-cursor>Behance</a><a href="#" data-cursor>Dribbble</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="copy">© <span id="year">2026</span> BoxnDots — Creative &amp; Branding Studio.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" data-cursor><svg viewBox="0 0 24 24" width="17" height="17" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="X" data-cursor><svg viewBox="0 0 24 24" width="17" height="17"><path fill="currentColor" d="M18.24 2H21.5l-7.4 8.46L22.5 22h-6.7l-5.24-6.86L4.5 22H1.24l7.9-9.03L1.5 2h6.87l4.73 6.26L18.24 2Zm-1.18 18h1.8L7.02 3.9H5.1L17.06 20Z"/></svg></a>
+        <a href="#" aria-label="LinkedIn" data-cursor><svg viewBox="0 0 24 24" width="17" height="17" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.7"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close" data-cursor><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <div class="modal-hero"><div class="thumb" id="modal-thumb"></div>
+        <button class="modal-play" aria-label="Play case study" data-cursor><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5 16 12l-6 3.5z" fill="currentColor"/></svg></button>
+      </div>
+      <div class="modal-body">
+        <span class="p-cat" id="modal-cat"></span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div class="modal-meta"><div><span>Client</span><b id="modal-client"></b></div><div><span>Year</span><b id="modal-year"></b></div><div><span>Scope</span><b id="modal-scope"></b></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIBS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- APP -->
+  <script src="js/particles.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
