@@ -84,7 +84,7 @@
     { name: 'Balaji G', role: 'Creative Head', img: 2 },
     { name: 'Archana Devi', role: 'Sr. UX/UI Designer', img: 3 },
     { name: 'Suma Jayasree JS', role: 'Visual Designer', img: 4 },
-    { name: 'Krish', role: 'Full Stack Developer', img: 5 },
+    { name: 'Ratha Krishnan', role: 'Full Stack Developer', img: 5 },
     { name: 'Kavimani K', role: 'Digital Marketing Manager', img: 6 },
   ];
   const teamGrid = $('#team-grid');
