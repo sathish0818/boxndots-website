@@ -80,10 +80,12 @@
 
   /* -------- Team -------- */
   const TEAM = [
-    { name: 'Archana Devi', role: 'Founder', img: 1 },
+    { name: 'Avinash S', role: 'Founder & CEO', img: 1 },
     { name: 'Balaji G', role: 'Creative Head', img: 2 },
-    { name: 'Krish', role: 'Digital Marketing Manager', img: 3 },
-    { name: 'Suma Jayashri', role: 'Visual Designer', img: 4 },
+    { name: 'Archana Devi', role: 'Sr. UX/UI Designer', img: 3 },
+    { name: 'Suma Jayasree', role: 'Visual Designer', img: 4 },
+    { name: 'Krish', role: 'Full Stack Developer', img: 5 },
+    { name: 'Kavimani K', role: 'Digital Marketing Manager', img: 6 },
   ];
   const teamGrid = $('#team-grid');
   if (teamGrid) {
