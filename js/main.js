@@ -91,7 +91,7 @@
   if (teamGrid) {
     teamGrid.innerHTML = TEAM.map((m) => `
       <figure class="team-card" data-reveal>
-        <div class="photo"><img src="assets/images/team/member-${m.img}.svg" alt="${m.name}, ${m.role}" loading="lazy" /></div>
+        <div class="photo"><img src="assets/images/team/member-${m.img}.jpg" onerror="this.onerror=null;this.src='assets/images/team/member-${m.img}.svg'" alt="${m.name}, ${m.role}" loading="lazy" /></div>
         <figcaption><h4>${m.name}</h4><span>${m.role}</span></figcaption>
       </figure>`).join('');
 
