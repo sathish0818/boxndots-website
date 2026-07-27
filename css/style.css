@@ -124,7 +124,7 @@ main { position: relative; z-index: var(--z-content); }
 #loader.done { opacity: 0; visibility: hidden; }
 .loader-inner { width: min(86vw, 300px); display: flex; flex-direction: column; align-items: center; }
 .loader-logo, .loader-word { display: none; }
-.loader-mark { width: 46px; color: var(--ink); }
+.loader-mark { width: 46px; color: var(--brand); }
 .loader-mark svg { width: 100%; height: auto; overflow: visible; }
 .loader-mark .ld-box { animation: ld-box 1.15s var(--ease-quart) infinite; }
 .loader-mark .ld-dot { animation: ld-dot 1.15s var(--ease-quart) infinite; }
