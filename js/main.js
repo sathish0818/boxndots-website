@@ -44,11 +44,11 @@
     { img: 8, cat: 'Marketing', title: 'Aura Growth', client: 'Aura', year: '2024', scope: 'SEO · Growth', desc: 'Technical SEO + content that lifted organic traffic 240%.' },
   ];
   const TESTIMONIALS = [
-    { avatar: 1, name: 'Elena Vasquez', role: 'CEO, Nova Labs', quote: 'BoxnDots didn\'t just design our brand — they gave it a heartbeat.' },
-    { avatar: 2, name: 'Marcus Chen', role: 'Founder, Orbit', quote: 'The launch film broke every engagement record we had.' },
-    { avatar: 3, name: 'Priya Nair', role: 'Head of Product, Pixel', quote: 'Our product went from a chore to a flex. Users comment on how good it feels.' },
-    { avatar: 4, name: 'Daniel Okafor', role: 'CMO, Lumen', quote: 'A studio that gets strategy AND craft is rare. BoxnDots is both.' },
-    { avatar: 5, name: 'Sara Lindqvist', role: 'Founder, Aura', quote: 'They treated our brand like their own and put us in a different league.' },
+    { avatar: 1, name: 'Dr. Rajarajan B', role: 'Pain Specialist · Personal Branding', quote: 'Box & Dots completely transformed my personal brand. From visual identity to social media creatives, everything looked premium and professional. Their attention to detail and understanding of my field made the entire process seamless.' },
+    { avatar: 2, name: 'Rajesh Murugan', role: 'ADS Infraa · Social Media Marketing', quote: 'The team helped us build a strong online presence with consistent and engaging social media content. We\'ve seen better brand visibility and received great feedback from our audience. Highly recommended.' },
+    { avatar: 3, name: 'Meena Sathya Kumar', role: 'Brand Identity', quote: 'They perfectly captured the vision of my brand. The logo, colors, and overall identity felt unique and memorable. Working with Box & Dots was smooth from start to finish.' },
+    { avatar: 4, name: 'Bharath Chandar', role: 'Construction Company · Brand Identity', quote: 'We wanted a brand identity that reflected trust and professionalism, and Box & Dots delivered exactly that. Their creative approach gave our company a fresh and modern look.' },
+    { avatar: 5, name: 'Deepak', role: 'Influencer Branding', quote: 'Box & Dots helped me build a personal brand that truly represents who I am. The designs were clean, creative, and made my profile stand out. It has definitely elevated my online presence.' },
   ];
 
   /* -------- Services list -------- */
@@ -194,7 +194,7 @@
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!$$('.field', form).map(validateField).every(Boolean)) { status.textContent = 'Please fix the highlighted fields.'; status.style.color = '#ff6b8a'; return; }
-    const btn = $('.form-submit', form); btn.style.pointerEvents = 'none'; status.style.color = 'var(--accent)'; status.textContent = 'Sending…';
+    const btn = $('.form-submit', form); btn.style.pointerEvents = 'none'; status.style.color = 'var(--accent-strong)'; status.textContent = 'Sending…';
     setTimeout(() => { status.textContent = '✓ Thank you! We\'ll reply within one business day.'; form.reset(); btn.style.pointerEvents = ''; }, 1200);
   });
   form?.addEventListener('input', (e) => { const f = e.target.closest('.field'); if (f?.classList.contains('invalid')) validateField(f); });
@@ -202,7 +202,7 @@
   news?.addEventListener('submit', (e) => {
     e.preventDefault(); const ns = $('#news-status'), email = $('#news-email').value.trim();
     if (!emailRe.test(email)) { ns.textContent = 'Enter a valid email.'; ns.style.color = '#ff6b8a'; return; }
-    ns.style.color = 'var(--accent)'; ns.textContent = '✓ Subscribed! Welcome.'; news.reset();
+    ns.style.color = 'var(--accent-strong)'; ns.textContent = '✓ Subscribed! Welcome.'; news.reset();
   });
 
   /* -------- Footer year -------- */
