@@ -268,8 +268,8 @@ main { position: relative; z-index: var(--z-content); }
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
 .testi { text-align: center; }
-.testi-track { position: relative; min-height: clamp(300px, 40vh, 420px); margin-top: clamp(2rem, 5vw, 4rem); }
-.testi-slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease-expo), transform 0.6s var(--ease-expo); pointer-events: none; }
+.testi-track { position: relative; min-height: clamp(280px, 38vh, 400px); margin-top: clamp(3rem, 6vw, 5.5rem); }
+.testi-slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease-expo), transform 0.6s var(--ease-expo); pointer-events: none; }
 .testi-slide.active { opacity: 1; transform: none; pointer-events: auto; }
 .testi-quote-big { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.8rem, 4.4vw, 4.2rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 20ch; margin: 0 auto; }
 .testi-quote-big .serif { color: var(--accent-strong); }

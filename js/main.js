@@ -44,11 +44,11 @@
     { img: 8, cat: 'Marketing', title: 'Aura Growth', client: 'Aura', year: '2024', scope: 'SEO · Growth', desc: 'Technical SEO + content that lifted organic traffic 240%.' },
   ];
   const TESTIMONIALS = [
-    { avatar: 1, name: 'Dr. Rajarajan B', role: 'Pain Specialist · Personal Branding', quote: 'Box & Dots completely transformed my personal brand. From visual identity to social media creatives, everything looked premium and professional. Their attention to detail and understanding of my field made the entire process seamless.' },
-    { avatar: 2, name: 'Rajesh Murugan', role: 'ADS Infraa · Social Media Marketing', quote: 'The team helped us build a strong online presence with consistent and engaging social media content. We\'ve seen better brand visibility and received great feedback from our audience. Highly recommended.' },
-    { avatar: 3, name: 'Meena Sathya Kumar', role: 'Brand Identity', quote: 'They perfectly captured the vision of my brand. The logo, colors, and overall identity felt unique and memorable. Working with Box & Dots was smooth from start to finish.' },
-    { avatar: 4, name: 'Bharath Chandar', role: 'Construction Company · Brand Identity', quote: 'We wanted a brand identity that reflected trust and professionalism, and Box & Dots delivered exactly that. Their creative approach gave our company a fresh and modern look.' },
-    { avatar: 5, name: 'Deepak', role: 'Influencer Branding', quote: 'Box & Dots helped me build a personal brand that truly represents who I am. The designs were clean, creative, and made my profile stand out. It has definitely elevated my online presence.' },
+    { avatar: 1, name: 'Dr. Rajarajan B', role: 'Pain Specialist · Personal Branding', quote: 'Box & Dots completely transformed my personal brand — every detail looked premium and professional.' },
+    { avatar: 2, name: 'Rajesh Murugan', role: 'ADS Infraa · Social Media Marketing', quote: 'They built us a strong, consistent social presence. Better visibility, great audience feedback — highly recommended.' },
+    { avatar: 3, name: 'Meena Sathya Kumar', role: 'Brand Identity', quote: 'They perfectly captured my brand\'s vision. The identity felt unique, memorable and truly mine.' },
+    { avatar: 4, name: 'Bharath Chandar', role: 'Construction Company · Brand Identity', quote: 'We wanted a brand that reflected trust and professionalism — Box & Dots delivered exactly that.' },
+    { avatar: 5, name: 'Deepak', role: 'Influencer Branding', quote: 'Box & Dots gave me a personal brand that truly represents me — clean, creative work that elevated my online presence.' },
   ];
 
   /* -------- Services list -------- */
@@ -136,7 +136,7 @@
   if (testiTrack) {
     testiTrack.innerHTML = TESTIMONIALS.map((t, i) => `
       <blockquote class="testi-slide ${i === 0 ? 'active' : ''}" data-i="${i}">
-        <p class="testi-quote-big">“${t.quote.replace(/move people/gi, '<em class="serif">$&</em>')}”</p>
+        <p class="testi-quote-big">“${t.quote}”</p>
         <div class="testi-author"><img src="assets/images/testimonials/avatar-${t.avatar}.svg" alt="${t.name}" loading="lazy" /><div><b>${t.name}</b><span>${t.role}</span></div></div>
       </blockquote>`).join('');
     testiNav.innerHTML = TESTIMONIALS.map((_, i) => `<button class="testi-dot ${i === 0 ? 'active' : ''}" data-i="${i}" aria-label="Testimonial ${i + 1}" data-cursor></button>`).join('');
