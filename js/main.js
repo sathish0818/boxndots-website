@@ -1,6 +1,6 @@
 /* ==========================================================================
    BoxnDots — Main app logic ("Studio" redesign)
-   Lenis smooth scroll, loader, content injection (services list, horizontal
+   Lenis smooth scroll, reveal, content injection (services list, horizontal
    work showcase, big testimonial carousel, client logos), modal, forms,
    mobile menu, scroll UI. Horizontal-scroll pinning lives in animation.js.
    ========================================================================== */
@@ -207,19 +207,17 @@
   /* -------- Footer year -------- */
   $('#year').textContent = new Date().getFullYear();
 
-  /* -------- Loader -------- */
-  (function loader() {
-    const el = $('#loader'), fill = $('#loader-fill'), pct = $('#loader-percent');
-    if (!el) { document.dispatchEvent(new CustomEvent('boxn:loaded')); return; }
-    let progress = 0, done = false;
-    const timer = setInterval(() => { if (done) return; progress += Math.max(0.6, (100 - progress) * 0.05); if (progress > 99) progress = 99; paint(); }, 40);
-    function paint() { const p = Math.floor(progress); if (pct) pct.textContent = p; if (fill) fill.style.width = p + '%'; }
-    function finish() {
-      if (done) return; done = true; clearInterval(timer); progress = 100; paint();
-      setTimeout(() => { el.classList.add('done'); document.body.classList.add('loaded'); document.dispatchEvent(new CustomEvent('boxn:loaded')); setTimeout(() => el.remove(), 900); }, 350);
+  /* -------- Reveal (soft blur → clear on load) -------- */
+  (function reveal() {
+    let done = false;
+    function go() {
+      if (done) return; done = true;
+      document.body.classList.add('loaded');            // fades the blur overlay out (CSS)
+      document.dispatchEvent(new CustomEvent('boxn:loaded'));
+      const b = $('#reveal-blur'); if (b) setTimeout(() => b.remove(), 800);
     }
-    if (document.readyState === 'complete') setTimeout(finish, 600); else addEventListener('load', () => setTimeout(finish, 600));
-    setTimeout(finish, 5000);
+    if (document.readyState === 'complete') requestAnimationFrame(go); else addEventListener('load', go);
+    setTimeout(go, 3000);   // safety net
   })();
 
   requestAnimationFrame(() => window.BoxnAnim?.refresh());
