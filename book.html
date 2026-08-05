@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#222022" />
+  <title>Book a call — BoxnDots</title>
+  <meta name="description" content="Book a 30-minute call with BoxnDots — pick a time that works for you." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="assets/vectors/favicon.svg?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { min-height: 100svh; }
+    .bk-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem clamp(1.2rem, 5vw, 3.5rem); border-bottom: 1px solid var(--line); }
+    .bk-brand { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; text-transform: uppercase; color: var(--ink); }
+    .bk-brand svg { display: block; }
+    .bk-back { font-family: var(--font-sans); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.25s; }
+    .bk-back:hover { color: var(--ink); }
+    .book { padding: clamp(2.5rem, 6vw, 5rem) clamp(1.2rem, 5vw, 3.5rem) 4rem; }
+    .book .container { width: min(960px, 94vw); margin-inline: auto; text-align: center; }
+    .book .kicker { justify-content: center; }
+    .book h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 0.98; letter-spacing: -0.03em; text-transform: lowercase; margin: 1.1rem 0 1.1rem; }
+    .book h1 .serif { text-transform: none; color: var(--accent-strong); }
+    .book p { color: var(--ink-soft); max-width: 52ch; margin: 0 auto 2.6rem; font-size: 1.12rem; }
+    .calendly-inline-widget { min-width: 320px; height: 720px; border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; }
+    .bk-fallback { color: var(--ink-mute); font-family: var(--font-sans); font-size: 0.9rem; padding: 2rem; }
+    .bk-alt { margin-top: 2rem; color: var(--ink-soft); font-size: 0.95rem; }
+    .bk-alt a { color: var(--accent-strong); border-bottom: 1px solid var(--line); }
+  </style>
+</head>
+
+<body class="loaded">
+  <nav class="bk-nav">
+    <a href="index.html" class="bk-brand" aria-label="BoxnDots — home">
+      <svg viewBox="0 0 100 100" width="30" height="30" fill="none" aria-hidden="true"><rect x="24" y="22" width="50" height="34" rx="8" fill="var(--brand)"/><circle cx="63" cy="71" r="11" fill="var(--brand)"/></svg>
+      BoxnDots
+    </a>
+    <a href="index.html" class="bk-back">&larr; Back to site</a>
+  </nav>
+
+  <main class="book">
+    <div class="container">
+      <span class="kicker">Book a call</span>
+      <h1>Let's talk about your <span class="serif">brand</span>.</h1>
+      <p>Pick a time that works for you — a relaxed 30-minute call to understand your goals and map out the next steps. No pressure, no hard sell.</p>
+
+      <!-- Calendly inline widget (themed to the BoxnDots palette) -->
+      <!-- TODO: replace the calendly.com/boxndots/30min URL below with your own Calendly scheduling link -->
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/boxndots/30min?hide_gdpr_banner=1&background_color=1a191a&text_color=f2f1ec&primary_color=c3d809"
+           data-resize="true">
+        <div class="bk-fallback">Loading the scheduler…</div>
+      </div>
+
+      <p class="bk-alt">Prefer email? Write to us at <a href="mailto:hello@boxndots.com">hello@boxndots.com</a> or call <a href="tel:+917305799909">+91 73057 99909</a>.</p>
+    </div>
+  </main>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
