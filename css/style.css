@@ -33,7 +33,7 @@
   --fs-label: 0.72rem;
 
   --container: min(1520px, 90vw);
-  --section-pad: clamp(6rem, 14vw, 15rem);
+  --section-pad: clamp(3.5rem, 7vw, 7rem);
   --radius: 14px; --radius-l: 26px; --radius-pill: 999px;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -105,7 +105,7 @@ main { position: relative; z-index: var(--z-content); }
 .kicker { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); }
 .kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 
-.section-head { max-width: 1100px; margin-bottom: clamp(3rem, 6vw, 6rem); }
+.section-head { max-width: 1100px; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 .section-head h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-h2); line-height: 0.94; letter-spacing: -0.03em; text-transform: lowercase; margin-top: 1.6rem; }
 .section-head h2 .serif { text-transform: none; color: var(--accent-strong); font-weight: 400; }
 .section-head p { color: var(--ink-soft); margin-top: 1.4rem; max-width: 52ch; font-size: 1.1rem; }
