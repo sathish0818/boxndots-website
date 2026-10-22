@@ -103,9 +103,9 @@ section { position: relative; }
 }
 .nav.hidden { transform: translateX(-50%) translateY(-160%); }
 .nav.shrunk { box-shadow: 3px 3px 0 var(--navy); }
-.brand { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--display); text-transform: uppercase; font-size: 1.35rem; letter-spacing: 0.02em; color: var(--navy); }
-.brand .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--navy); transition: transform 0.4s var(--ease-back); }
-.brand:hover .dot { transform: translateY(-6px) rotate(20deg); }
+.brand { display: inline-flex; align-items: center; color: var(--navy); }
+.brand-logo { height: 36px; width: 50px; aspect-ratio: 11 / 8; display: block; transition: transform 0.4s var(--ease-back); }
+.brand:hover .brand-logo { transform: translateY(-2px) rotate(-2deg); }
 .nav-links { display: flex; align-items: center; gap: 0.3rem; }
 .nav-links a { position: relative; padding: 0.55rem 0.95rem; font-weight: 600; font-size: 0.92rem; border-radius: var(--radius-pill); transition: color 0.25s, background 0.25s; }
 .nav-links a::after { content: ""; position: absolute; left: 0.95rem; right: 0.95rem; bottom: 0.35rem; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
@@ -241,27 +241,28 @@ section { position: relative; }
 .about__collage .note { position: absolute; font-family: var(--hand); font-size: 1.5rem; color: var(--coral); right: 4%; bottom: 6%; transform: rotate(-8deg); z-index: 5; }
 
 /* ================================ process ================================ */
-.process { background: var(--navy); color: var(--white); overflow: hidden; }
-.process .sec-title, .process .sec-kick { color: var(--white); }
-.process .sec-kick { color: var(--yellow); }
+.process { background: var(--white); color: var(--navy); overflow: hidden; }
+.process .sec-title { color: var(--navy); }
+.process .sec-kick { color: var(--blue); }
 .steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 2rem); }
-.steps__line { position: absolute; left: 0; right: 0; top: 34px; height: 3px; background: rgba(255,255,255,0.18); }
-.steps__line i { position: absolute; inset: 0; background: var(--yellow); transform-origin: left; transform: scaleX(0); transition: transform 1.2s var(--ease); }
+.steps__line { position: absolute; left: 0; right: 0; top: 34px; height: 3px; background: rgba(22,16,95,0.12); }
+.steps__line i { position: absolute; inset: 0; background: var(--blue); transform-origin: left; transform: scaleX(0); transition: transform 1.2s var(--ease); }
 .step { position: relative; }
-.step__dot { width: 68px; height: 68px; border-radius: 50%; border: 3px solid var(--yellow); display: grid; place-items: center; font-family: var(--display); font-size: 1.8rem; color: var(--yellow); background: var(--navy); transition: background 0.4s, color 0.4s; }
-.step.on .step__dot { background: var(--yellow); color: var(--navy); }
+.step__dot { width: 68px; height: 68px; border-radius: 50%; border: 3px solid var(--blue); display: grid; place-items: center; font-family: var(--display); font-size: 1.8rem; color: var(--blue); background: var(--white); transition: background 0.4s, color 0.4s; }
+.step.on .step__dot { background: var(--blue); color: var(--white); }
+.step__d { opacity: 0.72; }
 .step__t { font-family: var(--display); text-transform: uppercase; font-size: 1.5rem; margin: 1rem 0 0.4rem; }
 .step__d { font-size: 0.95rem; opacity: 0.78; max-width: 26ch; }
 
 /* ============================= testimonials ============================== */
-.testi { background: var(--yellow); color: var(--navy); overflow: hidden; }
+.testi { background: var(--lavender); color: var(--navy); overflow: hidden; }
 .testi .sec-kick { color: var(--blue); }
 .testi__stage { display: grid; }
 .testi__slide { grid-area: 1/1; opacity: 0; transform: translateY(14px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); pointer-events: none; }
 .testi__slide.active { opacity: 1; transform: none; pointer-events: auto; }
 .testi__q { font-family: var(--display); text-transform: uppercase; font-size: clamp(1.8rem, 4.5vw, 3.8rem); line-height: 1.0; max-width: 20ch; }
 .testi__who { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.8rem; }
-.testi__who .mk { width: 54px; height: 54px; border-radius: 50%; border: 2px solid var(--navy); background: var(--navy); color: var(--yellow); display: grid; place-items: center; font-family: var(--display); font-size: 1.3rem; }
+.testi__who .mk { width: 54px; height: 54px; border-radius: 50%; border: 2px solid var(--navy); background: var(--blue); color: var(--white); display: grid; place-items: center; font-family: var(--display); font-size: 1.3rem; }
 .testi__who b { font-size: 1.05rem; }
 .testi__who span { display: block; font-size: 0.85rem; opacity: 0.7; }
 .testi__nav { display: flex; gap: 0.6rem; margin-top: 2rem; }
@@ -273,12 +274,8 @@ section { position: relative; }
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2rem); }
 .member { position: relative; }
 .member__photo { aspect-ratio: 4/5; border: 2px solid var(--navy); border-radius: var(--radius); overflow: hidden; box-shadow: 5px 5px 0 var(--navy); }
-.member:nth-child(1) .member__photo { background: var(--blue-2); }
-.member:nth-child(2) .member__photo { background: var(--yellow); }
-.member:nth-child(3) .member__photo { background: var(--coral); }
-.member:nth-child(4) .member__photo { background: var(--lavender); }
-.member:nth-child(5) .member__photo { background: var(--blue-2); }
-.member:nth-child(6) .member__photo { background: var(--yellow); }
+.member:nth-child(odd) .member__photo { background: var(--lavender); }
+.member:nth-child(even) .member__photo { background: var(--blue-2); }
 .member__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: filter 0.4s var(--ease), transform 0.6s var(--ease); mix-blend-mode: multiply; }
 .member:hover .member__photo img { filter: none; transform: scale(1.04); }
 .member__name { font-family: var(--display); text-transform: uppercase; font-size: 1.35rem; margin-top: 0.8rem; color: var(--navy); }
