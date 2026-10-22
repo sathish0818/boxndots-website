@@ -1,224 +1,218 @@
 /* ==========================================================================
-   BoxnDots — Main app logic ("Studio" redesign)
-   Lenis smooth scroll, reveal, content injection (services list, horizontal
-   work showcase, big testimonial carousel, client logos), modal, forms,
-   mobile menu, scroll UI. Horizontal-scroll pinning lives in animation.js.
+   BoxnDots — "Louder Design" interactions (vanilla, dependency-light)
+   Mobile menu, nav behaviour, hero reveal, scroll reveals, manifesto word
+   highlight, process timeline, testimonials, team, form (mailto), magnetics,
+   cursor label, SVG line draw. Honors prefers-reduced-motion.
    ========================================================================== */
 (function () {
+  'use strict';
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* -------- Lenis smooth scroll -------- */
-  let lenis = null;
-  if (window.Lenis && !reduced) {
-    lenis = new Lenis({ duration: 1.1, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, touchMultiplier: 1.5 });
-    if (window.gsap && window.ScrollTrigger) {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((t) => lenis.raf(t * 1000));
-      gsap.ticker.lagSmoothing(0);
-    } else { const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
-  }
-  window.BoxnLenis = lenis;
-
-  /* -------- Data -------- */
-  const SERVICES = [
-    { title: 'Brand Identity', desc: 'Logos, systems and visual languages that make you unmistakable.' },
-    { title: 'Graphic Design', desc: 'Print, packaging and campaign design crafted to the pixel.' },
-    { title: 'Motion Graphics', desc: 'Kinetic type and brand films that command attention.' },
-    { title: 'Video Editing', desc: 'Cinematic edits, colour and sound for launches.' },
-    { title: 'UX / UI Design', desc: 'Interfaces engineered for delight and conversion.' },
-    { title: 'Digital Marketing', desc: 'Full-funnel campaigns that turn attention into growth.' },
-    { title: 'SEO', desc: 'Technical + content SEO that keeps you on top.' },
-    { title: 'Social Media', desc: 'Always-on content that builds real audiences.' },
-    { title: 'Creative Strategy', desc: 'Positioning and narrative that give your brand a backbone.' },
-  ];
-  const PROJECTS = [
-    { img: 1, cat: 'Branding', title: 'Nova Identity', client: 'Nova Labs', year: '2025', scope: 'Brand · Identity', desc: 'A living identity system for a deep-tech studio — modular marks and a full brand world.' },
-    { img: 2, cat: 'Motion', title: 'Orbit Launch Film', client: 'Orbit', year: '2025', scope: 'Motion · Film', desc: 'A 60-second launch film that announced a category-defining product.' },
-    { img: 3, cat: 'UX / UI', title: 'Pixel Dashboard', client: 'Pixel', year: '2024', scope: 'Product · UX/UI', desc: 'An analytics product reimagined into a calm, powerful interface.' },
-    { img: 4, cat: 'Branding', title: 'Vertex Rebrand', client: 'Vertex', year: '2024', scope: 'Brand · Strategy', desc: 'A full rebrand that repositioned Vertex as the premium choice.' },
-    { img: 5, cat: 'Marketing', title: 'Lumen Campaign', client: 'Lumen', year: '2025', scope: 'Marketing · Social', desc: 'An always-on campaign that tripled engagement in a quarter.' },
-    { img: 6, cat: 'Motion', title: 'Zenith Sizzle', client: 'Zenith', year: '2024', scope: 'Motion · 3D', desc: 'A bold product sizzle reel used across launch and retail.' },
-    { img: 7, cat: 'UX / UI', title: 'Flow Mobile App', client: 'Flow', year: '2025', scope: 'Product · Mobile', desc: 'A finance app redesigned around trust, speed and motion.' },
-    { img: 8, cat: 'Marketing', title: 'Aura Growth', client: 'Aura', year: '2024', scope: 'SEO · Growth', desc: 'Technical SEO + content that lifted organic traffic 240%.' },
-  ];
-  const TESTIMONIALS = [
-    { avatar: 1, name: 'Dr. Rajarajan B', role: 'Pain Specialist · Personal Branding', quote: 'Box & Dots completely transformed my personal brand — every detail looked premium and professional.' },
-    { avatar: 2, name: 'Rajesh Murugan', role: 'ADS Infraa · Social Media Marketing', quote: 'They built us a strong, consistent social presence. Better visibility, great audience feedback — highly recommended.' },
-    { avatar: 3, name: 'Meena Sathya Kumar', role: 'Brand Identity', quote: 'They perfectly captured my brand\'s vision. The identity felt unique, memorable and truly mine.' },
-    { avatar: 4, name: 'Bharath Chandar', role: 'Construction Company · Brand Identity', quote: 'We wanted a brand that reflected trust and professionalism — Box & Dots delivered exactly that.' },
-    { avatar: 5, name: 'Deepak', role: 'Influencer Branding', quote: 'Box & Dots gave me a personal brand that truly represents me — clean, creative work that elevated my online presence.' },
-  ];
-
-  /* -------- Services list -------- */
-  const svc = $('#svc-list');
-  if (svc) svc.innerHTML = SERVICES.map((s, i) => `
-    <div class="svc-row" data-cursor>
-      <span class="svc-num">${String(i + 1).padStart(2, '0')}</span>
-      <span class="svc-title">${s.title}</span>
-      <span class="svc-desc">${s.desc}</span>
-      <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </div>`).join('');
-
-  /* -------- Our clients (single rolling LOGO ticker — distinct from the hero marquee) -------- */
-  const clientTrack = $('#client-track');
-  if (clientTrack) {
-    const MARKS = [
-      '<circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/>',
-      '<rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2"/>',
-      '<circle cx="12" cy="12" r="7.5" fill="currentColor"/>',
-      '<rect x="6.5" y="6.5" width="11" height="11" transform="rotate(45 12 12)" stroke="currentColor" stroke-width="2"/>',
-      '<path d="M12 4 20.5 19H3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
-      '<g fill="currentColor"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="8" cy="16" r="2.6"/><circle cx="16" cy="16" r="2.6"/></g>',
-      '<circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-      '<rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    ];
-    const set = PROJECTS.map((p, i) => `<span class="client-logo"><svg class="cl-mark" viewBox="0 0 24 24" fill="none">${MARKS[i % MARKS.length]}</svg><b>${p.client}</b></span>`).join('');
-    clientTrack.innerHTML = set + set;   // duplicated for a seamless infinite loop
-  }
-
-  /* -------- Team -------- */
+  /* -------- data -------- */
   const TEAM = [
     { name: 'Avinash S', role: 'Founder & CEO', img: 1 },
     { name: 'Balaji G', role: 'Creative Head', img: 2 },
+    { name: 'Archana Devi', role: 'Visual Designer', img: 3 },
     { name: 'Suma Jayasree JS', role: 'Visual Designer', img: 4 },
     { name: 'Ratha Krishnan', role: 'Full Stack Developer', img: 5 },
     { name: 'Kavimani K', role: 'Digital Marketing Manager', img: 6 },
   ];
+  const TESTIMONIALS = [
+    { name: 'Dr. Rajarajan B', role: 'Pain Specialist · Personal Branding', quote: 'Box & Dots completely transformed my personal brand — every detail looked premium and professional.' },
+    { name: 'Rajesh Murugan', role: 'ADS Infraa · Social Media Marketing', quote: 'They built us a strong, consistent social presence. Better visibility, great audience feedback — highly recommended.' },
+    { name: 'Meena Sathya Kumar', role: 'Brand Identity', quote: 'They perfectly captured my brand’s vision — unique, memorable and truly mine.' },
+    { name: 'Bharath Chandar', role: 'Construction Company · Brand Identity', quote: 'We wanted a brand that reflected trust and professionalism — Box & Dots delivered exactly that.' },
+    { name: 'Deepak', role: 'Influencer Branding', quote: 'Clean, creative work that made my profile stand out and elevated my online presence.' },
+  ];
+
+  /* -------- team render -------- */
   const teamGrid = $('#team-grid');
   if (teamGrid) {
     teamGrid.innerHTML = TEAM.map((m) => `
-      <figure class="team-card" data-reveal>
-        <div class="photo"><img src="assets/images/team/member-${m.img}.jpg" onerror="this.onerror=null;this.src='assets/images/team/member-${m.img}.svg'" alt="${m.name}, ${m.role}" loading="lazy" /></div>
-        <figcaption><h4>${m.name}</h4><span>${m.role}</span></figcaption>
-      </figure>`).join('');
-
-    /* carousel: 3 visible (2 on tablet, 1 on phone), arrows page one card at a time */
-    const prev = $('#team-prev'), next = $('#team-next');
-    let idx = 0;
-    const visible = () => (innerWidth <= 560 ? 1 : innerWidth <= 860 ? 2 : 3);
-    const maxIdx = () => Math.max(0, TEAM.length - visible());
-    function update() {
-      idx = Math.min(idx, maxIdx());
-      const card = teamGrid.querySelector('.team-card');
-      const gap = parseFloat(getComputedStyle(teamGrid).columnGap) || 0;
-      const step = card.getBoundingClientRect().width + gap;
-      teamGrid.style.transform = `translateX(${-idx * step}px)`;
-      if (prev) prev.disabled = idx <= 0;
-      if (next) next.disabled = idx >= maxIdx();
-    }
-    prev?.addEventListener('click', () => { idx = Math.max(0, idx - 1); update(); });
-    next?.addEventListener('click', () => { idx = Math.min(maxIdx(), idx + 1); update(); });
-    addEventListener('resize', update, { passive: true });
-    update(); addEventListener('load', update);   // set initial state immediately (rAF-independent)
+      <article class="member" data-reveal>
+        <div class="member__photo"><img src="assets/images/team/member-${m.img}.jpg" alt="${m.name}, ${m.role}" loading="lazy" /></div>
+        <h3 class="member__name">${m.name}</h3>
+        <p class="member__role">${m.role}</p>
+      </article>`).join('');
   }
 
-  /* modal (retained but unused — clients link to contact) */
-  const backdrop = $('#modal-backdrop');
-  function openModal(i) {
-    const p = PROJECTS[i]; if (!p) return;
-    $('#modal-thumb').style.cssText = `background-image:url(assets/images/portfolio/project-${p.img}.svg);background-size:cover;background-position:center;`;
-    $('#modal-cat').textContent = p.cat; $('#modal-title').textContent = p.title;
-    $('#modal-desc').textContent = p.desc; $('#modal-client').textContent = p.client;
-    $('#modal-year').textContent = p.year; $('#modal-scope').textContent = p.scope;
-    backdrop.classList.add('open'); backdrop.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; lenis?.stop();
-  }
-  function closeModal() { backdrop.classList.remove('open'); backdrop.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; lenis?.start(); }
-  /* client rows link to #contact (handled by the anchor-scroll handler) — no case-study modal */
-  $('#modal-close')?.addEventListener('click', closeModal);
-  backdrop?.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
-  addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-  /* -------- Testimonials (big fade carousel) -------- */
-  const testiTrack = $('#testi-track'), testiNav = $('#testi-nav');
-  if (testiTrack) {
-    testiTrack.innerHTML = TESTIMONIALS.map((t, i) => `
-      <blockquote class="testi-slide ${i === 0 ? 'active' : ''}" data-i="${i}">
-        <p class="testi-quote-big">“${t.quote}”</p>
-        <div class="testi-author"><img src="assets/images/testimonials/avatar-${t.avatar}.svg" alt="${t.name}" loading="lazy" /><div><b>${t.name}</b><span>${t.role}</span></div></div>
+  /* -------- testimonials render + carousel -------- */
+  const stage = $('#testi-stage'), tnav = $('#testi-nav');
+  if (stage && tnav) {
+    stage.innerHTML = TESTIMONIALS.map((t, i) => `
+      <blockquote class="testi__slide ${i === 0 ? 'active' : ''}" data-i="${i}" aria-hidden="${i !== 0}">
+        <p class="testi__q">“${t.quote}”</p>
+        <div class="testi__who"><span class="mk" aria-hidden="true">${t.name[0]}</span><div><b>${t.name}</b><span>${t.role}</span></div></div>
       </blockquote>`).join('');
-    testiNav.innerHTML = TESTIMONIALS.map((_, i) => `<button class="testi-dot ${i === 0 ? 'active' : ''}" data-i="${i}" aria-label="Testimonial ${i + 1}" data-cursor></button>`).join('');
-    const slides = $$('.testi-slide', testiTrack); let active = 0, timer;
-    const go = (i) => { active = (i + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle('active', k === active)); $$('.testi-dot', testiNav).forEach((d, k) => d.classList.toggle('active', k === active)); };
-    testiNav.addEventListener('click', (e) => { const d = e.target.closest('.testi-dot'); if (d) { go(+d.dataset.i); restart(); } });
-    const auto = () => { timer = setInterval(() => go(active + 1), 5000); };
-    const restart = () => { clearInterval(timer); auto(); };
-    if (!reduced) auto();
+    tnav.innerHTML = TESTIMONIALS.map((_, i) => `<button class="testi__dot ${i === 0 ? 'active' : ''}" role="tab" aria-label="Testimonial ${i + 1}" aria-selected="${i === 0}"></button>`).join('');
+    const slides = $$('.testi__slide', stage), dots = $$('.testi__dot', tnav);
+    let cur = 0, timer;
+    const go = (n) => {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => { s.classList.toggle('active', k === cur); s.setAttribute('aria-hidden', k !== cur); });
+      dots.forEach((d, k) => { d.classList.toggle('active', k === cur); d.setAttribute('aria-selected', k === cur); });
+    };
+    const start = () => { if (!reduced) timer = setInterval(() => go(cur + 1), 6000); };
+    const stop = () => clearInterval(timer);
+    dots.forEach((d, k) => d.addEventListener('click', () => { go(k); stop(); start(); }));
+    tnav.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { go(cur + 1); stop(); start(); }
+      if (e.key === 'ArrowLeft') { go(cur - 1); stop(); start(); }
+    });
+    start();
   }
 
-  /* -------- Client logos -------- */
-  const logos = $('#client-logos');
-  if (logos) logos.innerHTML = [1, 2, 3, 4, 5, 6].map((c) => `<img src="assets/images/about/client-${c}.svg" alt="Client logo" loading="lazy" />`).join('');
-
-  /* -------- Mobile menu -------- */
-  const burger = $('#nav-burger'), mobile = $('#mobile-menu');
-  burger?.addEventListener('click', () => { const open = mobile.classList.toggle('open'); burger.setAttribute('aria-expanded', open); });
-  $$('#mobile-menu a').forEach((a) => a.addEventListener('click', () => mobile.classList.remove('open')));
-
-  /* -------- Anchor links -------- */
-  $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
-    const id = a.getAttribute('href'); if (id.length < 2) return;
-    const t = document.querySelector(id); if (!t) return;
-    e.preventDefault();
-    if (lenis) lenis.scrollTo(t, { offset: 0, duration: 1.2 }); else t.scrollIntoView({ behavior: 'smooth' });
-    mobile?.classList.remove('open');
+  /* -------- mobile menu -------- */
+  const burger = $('#burger'), mm = $('#mobile-menu');
+  burger?.addEventListener('click', () => {
+    const open = mm.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  $$('#mobile-menu a').forEach((a) => a.addEventListener('click', () => {
+    mm.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
   }));
 
-  /* -------- Scroll UI (progress, nav hide/show, active) -------- */
-  const bar = $('#scroll-progress'), nav = $('#nav');
-  const links = $$('.nav-links a'), sections = links.map((l) => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  /* -------- nav scroll behaviour + active link -------- */
+  const nav = $('#nav');
+  const navLinks = $$('.nav-links a');
+  const secs = navLinks.map((l) => $(l.getAttribute('href'))).filter(Boolean);
   let lastY = 0;
   function onScroll() {
-    const y = window.scrollY, max = document.documentElement.scrollHeight - innerHeight;
-    if (bar) bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
-    if (y > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-    nav.classList.toggle('hidden', y > lastY && y > 400); lastY = y;
-    const mid = y + innerHeight * 0.4; let cur = sections[0];
-    for (const s of sections) if (s.offsetTop <= mid) cur = s;
-    links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + cur?.id));
+    const y = scrollY;
+    nav.classList.toggle('shrunk', y > 30);
+    nav.classList.toggle('hidden', y > lastY && y > 480 && !mm.classList.contains('open'));
+    lastY = y;
+    const mid = y + innerHeight * 0.35;
+    let id = secs[0]?.id;
+    for (const s of secs) if (s.offsetTop <= mid) id = s.id;
+    navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
   }
   addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
-  /* -------- Forms -------- */
+  /* -------- hero reveal + SVG draw -------- */
+  requestAnimationFrame(() => $('.hero')?.classList.add('in'));
+  $$('.draw').forEach((p) => {
+    const len = p.getTotalLength ? p.getTotalLength() : 200;
+    p.style.strokeDasharray = len; p.style.strokeDashoffset = reduced ? 0 : len;
+  });
+
+  /* -------- scroll reveals -------- */
+  const revIO = new IntersectionObserver((ents) => {
+    ents.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('seen');
+      $$('.draw', e.target).forEach((p) => { p.style.transition = 'stroke-dashoffset 1s var(--ease)'; p.style.strokeDashoffset = 0; });
+      revIO.unobserve(e.target);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+  $$('[data-reveal]').forEach((el) => revIO.observe(el));
+  // draw hero arrow once hero is in view
+  const heroArrow = $('.hero__arrow');
+  if (heroArrow && !reduced) setTimeout(() => $$('.draw', heroArrow).forEach((p) => { p.style.transition = 'stroke-dashoffset 1.1s var(--ease)'; p.style.strokeDashoffset = 0; }), 700);
+
+  /* -------- manifesto word highlight on scroll -------- */
+  const man = $('#manifesto');
+  if (man) {
+    const words = man.textContent.trim().split(/\s+/);
+    man.innerHTML = words.map((w) => {
+      const blue = /feel/i.test(w);
+      return `<span class="w${blue ? ' blue' : ''}">${w}</span>`;
+    }).join(' ');
+    const ws = $$('.w', man);
+    if (reduced) { ws.forEach((w) => w.classList.add('on')); }
+    else {
+      const upd = () => {
+        const r = man.getBoundingClientRect();
+        const prog = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4)));
+        const n = Math.round(prog * ws.length);
+        ws.forEach((w, i) => w.classList.toggle('on', i < n));
+      };
+      addEventListener('scroll', upd, { passive: true }); upd();
+    }
+  }
+
+  /* -------- process timeline -------- */
+  const steps = $('#steps');
+  if (steps) {
+    const fill = $('#steps-fill'), stepEls = $$('[data-step]', steps);
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach((e) => {
+        if (!e.isIntersecting) return;
+        if (fill && !reduced) fill.style.transform = 'scaleX(1)';
+        stepEls.forEach((s, i) => setTimeout(() => s.classList.add('on'), reduced ? 0 : 250 + i * 260));
+        io.disconnect();
+      });
+    }, { threshold: 0.3 });
+    io.observe(steps);
+  }
+
+  /* -------- magnetic buttons (fine pointer only) -------- */
+  if (finePointer && !reduced) {
+    $$('[data-magnetic]').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.25}px, ${(e.clientY - r.top - r.height / 2) * 0.35}px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* -------- cursor-following label on project media (desktop) -------- */
+  const cl = $('#cursor-label');
+  if (cl && finePointer) {
+    $$('.proj__media').forEach((m) => {
+      m.addEventListener('pointerenter', () => { cl.textContent = 'View'; cl.classList.add('show'); });
+      m.addEventListener('pointermove', (e) => { cl.style.left = e.clientX + 'px'; cl.style.top = e.clientY + 'px'; });
+      m.addEventListener('pointerleave', () => cl.classList.remove('show'));
+    });
+  }
+
+  /* -------- hero sticker parallax (subtle) -------- */
+  const stageEl = $('.hero__stage');
+  if (stageEl && finePointer && !reduced) {
+    stageEl.addEventListener('pointermove', (e) => {
+      const r = stageEl.getBoundingClientRect();
+      const dx = (e.clientX - r.left - r.width / 2) / r.width;
+      const dy = (e.clientY - r.top - r.height / 2) / r.height;
+      $$('[data-float]', stageEl).forEach((s, i) => { s.style.marginLeft = dx * (6 + i * 3) + 'px'; s.style.marginTop = dy * (6 + i * 3) + 'px'; });
+    });
+    stageEl.addEventListener('pointerleave', () => $$('[data-float]', stageEl).forEach((s) => { s.style.marginLeft = ''; s.style.marginTop = ''; }));
+  }
+
+  /* -------- contact form (validate → mailto; no fake success) -------- */
+  const form = $('#form'), status = $('#form-status');
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const form = $('#contact-form'), status = $('#form-status');
-  function validateField(field) {
-    const input = field.querySelector('input, textarea'); if (!input || !input.required) return true;
-    let ok = input.value.trim().length > 0; if (input.type === 'email') ok = emailRe.test(input.value.trim());
-    field.classList.toggle('invalid', !ok); return ok;
+  function validate(field) {
+    const input = field.querySelector('input,select,textarea');
+    if (!input || !input.required) return true;
+    let ok = input.value.trim().length > 0;
+    if (input.type === 'email') ok = emailRe.test(input.value.trim());
+    field.classList.toggle('invalid', !ok);
+    return ok;
   }
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!$$('.field', form).map(validateField).every(Boolean)) { status.textContent = 'Please fix the highlighted fields.'; status.style.color = '#ff6b8a'; return; }
-    const btn = $('.form-submit', form); btn.style.pointerEvents = 'none'; status.style.color = 'var(--accent-strong)'; status.textContent = 'Sending…';
-    setTimeout(() => { status.textContent = '✓ Thank you! We\'ll reply within one business day.'; form.reset(); btn.style.pointerEvents = ''; }, 1200);
+    const fields = $$('.field', form);
+    const allOk = fields.map(validate).every(Boolean);
+    if (!allOk) { status.textContent = 'Almost — please fix the highlighted fields.'; status.className = 'form__status bad'; return; }
+    const v = (n) => (form.elements[n]?.value || '').trim();
+    const subject = `New project enquiry — ${v('name')}`;
+    const body = [
+      `Name: ${v('name')}`, `Email: ${v('email')}`, `Company/brand: ${v('company') || '—'}`,
+      `Service: ${v('service') || '—'}`, `Budget: ${v('budget') || '—'}`, '', 'Details:', v('details'),
+    ].join('\n');
+    window.location.href = `mailto:hello@boxndots.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    status.textContent = '✓ Opening your email app… if nothing happens, write to hello@boxndots.com';
+    status.className = 'form__status ok';
   });
-  form?.addEventListener('input', (e) => { const f = e.target.closest('.field'); if (f?.classList.contains('invalid')) validateField(f); });
-  const news = $('#news-form');
-  news?.addEventListener('submit', (e) => {
-    e.preventDefault(); const ns = $('#news-status'), email = $('#news-email').value.trim();
-    if (!emailRe.test(email)) { ns.textContent = 'Enter a valid email.'; ns.style.color = '#ff6b8a'; return; }
-    ns.style.color = 'var(--accent-strong)'; ns.textContent = '✓ Subscribed! Welcome.'; news.reset();
-  });
+  form?.addEventListener('input', (e) => { const f = e.target.closest('.field'); if (f?.classList.contains('invalid')) validate(f); });
 
-  /* -------- Footer year -------- */
-  $('#year').textContent = new Date().getFullYear();
-
-  /* -------- Reveal (soft blur → clear on load) -------- */
-  (function reveal() {
-    let done = false;
-    function go() {
-      if (done) return; done = true;
-      document.body.classList.add('loaded');            // fades the blur overlay out (CSS)
-      document.dispatchEvent(new CustomEvent('boxn:loaded'));
-      const b = $('#reveal-blur'); if (b) setTimeout(() => b.remove(), 800);
-    }
-    if (document.readyState === 'complete') requestAnimationFrame(go); else addEventListener('load', go);
-    setTimeout(go, 3000);   // safety net
-  })();
-
-  requestAnimationFrame(() => window.BoxnAnim?.refresh());
+  /* -------- footer year -------- */
+  const yr = $('#year'); if (yr) yr.textContent = new Date().getFullYear();
 })();

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#F6F7FF"/>
+  <text x="80" y="250" font-family="Anton, sans-serif" font-size="150" fill="#16105F">GOOD IDEAS.</text>
+  <text x="80" y="390" font-family="Anton, sans-serif" font-size="150" fill="#0000FF">LOUDER DESIGN.</text>
+  <text x="80" y="480" font-family="DM Sans, sans-serif" font-size="34" fill="#16105F">We build brands and visual stories that refuse to blend in.</text>
+  <circle cx="1060" cy="140" r="54" fill="#FFD60A" stroke="#16105F" stroke-width="5"/>
+  <rect x="80" y="540" width="190" height="56" rx="28" fill="#0000FF"/>
+  <text x="175" y="577" font-family="DM Sans, sans-serif" font-weight="700" font-size="26" fill="#fff" text-anchor="middle">BoxnDots</text>
+</svg>
