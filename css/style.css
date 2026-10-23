@@ -373,15 +373,6 @@ button{ font:inherit; cursor:pointer; }
 }
 .js :is(.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__lead,.hero__note,.contact__lead,.contact__email,.contact__actions,.member).is-visible{ opacity:1; }
 
-/* ---- scrolling marquee (always-on motion) ---- */
-.marquee{ overflow:hidden; background:var(--dark); color:var(--off); padding-block:clamp(16px,2.4vw,26px); }
-.marquee__track{ display:flex; width:max-content; animation:marquee 32s linear infinite; }
-.marquee:hover .marquee__track{ animation-play-state:paused; }
-.marquee__group{ display:flex; align-items:center; flex:0 0 auto; }
-.marquee__group span{ font-family:var(--f-serif); font-weight:300; font-size:clamp(28px,5vw,54px); white-space:nowrap; }
-.marquee__group i{ font-style:normal; color:var(--accent); font-size:clamp(14px,2.2vw,24px); margin:0 clamp(18px,3vw,42px); }
-@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-
 /* reduced motion: disable all of it */
 @media (prefers-reduced-motion:reduce){
   *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
