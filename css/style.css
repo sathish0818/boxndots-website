@@ -82,12 +82,14 @@ button{ font:inherit; cursor:pointer; }
 .nav{ position:relative; z-index:20; }
 .nav__inner{ display:flex; align-items:center; justify-content:space-between; padding-block:20px; }
 .logo{ height:34px; width:auto; color:var(--ink); }
-.nav__links{ display:none; gap:30px; }
+.nav__right{ display:none; align-items:center; gap:28px; }
+.nav__links{ display:flex; align-items:center; gap:30px; }
 .nav__links a{ font-size:15px; color:var(--ink); transition:color .2s; }
 .nav__links a:hover{ color:var(--label); }
+.nav__cta{ background:var(--ink); color:#fff; }
 .nav__burger{ display:inline-flex; flex-direction:column; justify-content:center; gap:6px; width:34px; height:28px; background:none; border:0; padding:4px; }
 .nav__burger span{ display:block; height:2.4px; width:26px; border-radius:2px; background:var(--ink); transition:transform .3s,opacity .3s; }
-@media (min-width:768px){ .nav__links{ display:flex; } .nav__burger{ display:none; } }
+@media (min-width:768px){ .nav__right{ display:flex; } .nav__burger{ display:none; } }
 
 /* mobile slide menu */
 .menu{ position:fixed; inset:0; z-index:40; background:var(--off); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; }
@@ -264,6 +266,8 @@ button{ font:inherit; cursor:pointer; }
 .btn--accent{ background:var(--accent); color:var(--ink); }
 .btn--accent span{ color:var(--ink); }
 .btn--ghost{ border:1.5px solid rgba(255,255,255,.22); color:#fff; }
+.btn--sm{ padding:10px 22px; font-size:14px; }
+.menu__cta{ background:var(--ink); color:#fff; margin-top:4px; }
 @media (min-width:768px){ .contact__actions .btn{ justify-content:flex-start; } }
 
 /* ========================================================================== */
