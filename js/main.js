@@ -123,12 +123,19 @@
     items.push({ el: el, ref: el.parentElement, speed: parseFloat(el.getAttribute('data-parallax')) || 0.15, frac: parseFloat(el.getAttribute('data-pmax')) || 0.2 });
   });
   // in-flow elements: reference is self, clamp is fixed px; varied speeds create the depth
-  [['.hero__title', 0.07, 60], ['.hero__lead', 0.11, 50], ['.sec-title', 0.08, 45], ['.sec-intro', 0.035, 24],
-   ['.team__kicker', 0.05, 28], ['.proj__body h3', 0.06, 34], ['.contact__title', 0.09, 55], ['.contact__lead', 0.035, 24]]
+  [['.hero__title', 0.08, 70], ['.hero__lead', 0.12, 55], ['.sec-title', 0.09, 55], ['.sec-intro', 0.035, 24],
+   ['.team__kicker', 0.05, 28], ['.contact__title', 0.10, 65], ['.contact__lead', 0.035, 24]]
   .forEach(function (c) {
     Array.prototype.forEach.call(document.querySelectorAll(c[0]), function (el) {
       items.push({ el: el, ref: el, speed: c[1], px: c[2] });
     });
+  });
+  // whole-box movers — the card/block drifts, the image inside never shifts
+  Array.prototype.forEach.call(document.querySelectorAll('.member'), function (el) {
+    items.push({ el: el, ref: el, speed: 0.05, px: 16, cssVar: '--py' }); // team card (composes with arc)
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.proj'), function (el) {
+    items.push({ el: el, ref: el, speed: 0.05, px: 26 });                 // work row block
   });
 
   if (items.length && !reduce) {
@@ -143,10 +150,11 @@
         if (it.frac != null) {                       // over-scanned media: free both ways (clipped)
           var max = box.height * it.frac;
           if (offset > max) offset = max; else if (offset < -max) offset = -max;
-        } else {                                     // in-flow text: drift up only, never into content below
+        } else {                                     // in-flow blocks/text: drift up only, never into content below
           if (offset > 0) offset = 0; else if (offset < -it.px) offset = -it.px;
         }
-        it.el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+        if (it.cssVar) it.el.style.setProperty(it.cssVar, offset.toFixed(1) + 'px');
+        else it.el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
       });
       ticking = false;
     };
