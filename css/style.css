@@ -115,14 +115,18 @@ button{ font:inherit; cursor:pointer; }
 @media (min-width:768px){ .hero__note p{ font-size:17px; } }
 
 .hero__band{
-  position:relative;
+  position:relative; overflow:hidden;
   margin-inline:calc(-1 * var(--pad));
   height:var(--band-h);
-  background:url("../assets/images/hero-band.jpg") center/cover no-repeat;
   border-radius:var(--band-r) var(--band-r) 0 0;
 }
+.hero__band-img{
+  position:absolute; left:0; right:0; top:-35%; height:170%;
+  background:url("../assets/images/hero-band.jpg") center/cover no-repeat;
+  will-change:transform;
+}
 .hero__band-label{
-  position:absolute; left:var(--pad); top:clamp(30px, 3vw, 80px);
+  position:absolute; z-index:1; left:var(--pad); top:clamp(30px, 3vw, 80px);
   font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.18em; color:var(--ink);
 }
 

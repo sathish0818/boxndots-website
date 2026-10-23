@@ -98,4 +98,28 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
     reveal.forEach(function (el) { io.observe(el); });
   }
+
+  /* ---- parallax scrolling ---- */
+  var px = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (px.length && !reduce) {
+    var ticking = false;
+    var apply = function () {
+      var vh = window.innerHeight;
+      px.forEach(function (el) {
+        var box = el.parentElement.getBoundingClientRect();
+        if (box.bottom < -300 || box.top > vh + 300) return; // skip off-screen
+        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
+        var center = box.top + box.height / 2;
+        var offset = (center - vh / 2) * -speed;
+        var max = box.height * 0.3;                 // clamp so no empty edges show
+        if (offset > max) offset = max; else if (offset < -max) offset = -max;
+        el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+      });
+      ticking = false;
+    };
+    var onScroll = function () { if (!ticking) { window.requestAnimationFrame(apply); ticking = true; } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    apply();
+  }
 })();
