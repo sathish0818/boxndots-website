@@ -120,7 +120,7 @@ button{ font:inherit; cursor:pointer; }
   border-radius:var(--band-r) var(--band-r) 0 0;
 }
 .hero__band-label{
-  position:absolute; left:var(--pad); top:30px;
+  position:absolute; left:var(--pad); top:clamp(30px, 3vw, 80px);
   font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.18em; color:var(--ink);
 }
 
