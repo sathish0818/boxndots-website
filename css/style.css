@@ -115,15 +115,11 @@ button{ font:inherit; cursor:pointer; }
 @media (min-width:768px){ .hero__note p{ font-size:17px; } }
 
 .hero__band{
-  position:relative; overflow:hidden;
+  position:relative;
   margin-inline:calc(-1 * var(--pad));
   height:var(--band-h);
-  border-radius:var(--band-r) var(--band-r) 0 0;
-}
-.hero__band-img{
-  position:absolute; left:0; right:0; top:-45%; height:190%;
   background:url("../assets/images/hero-band.jpg") center/cover no-repeat;
-  will-change:transform;
+  border-radius:var(--band-r) var(--band-r) 0 0;
 }
 .hero__band-label{
   position:absolute; z-index:1; left:var(--pad); top:clamp(30px, 3vw, 80px);

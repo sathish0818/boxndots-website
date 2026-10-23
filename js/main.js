@@ -116,36 +116,4 @@
     reveal.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- parallax scrolling (whole page) ---- */
-  var items = [];
-  // over-scanned media (band + team photos): reference is the clipped parent, clamp is a fraction
-  Array.prototype.forEach.call(document.querySelectorAll('[data-parallax]'), function (el) {
-    items.push({ el: el, ref: el.parentElement, speed: parseFloat(el.getAttribute('data-parallax')) || 0.15, frac: parseFloat(el.getAttribute('data-pmax')) || 0.2 });
-  });
-
-  if (items.length && !reduce) {
-    var ticking = false;
-    var apply = function () {
-      var vh = window.innerHeight;
-      items.forEach(function (it) {
-        var box = it.ref.getBoundingClientRect();
-        if (box.bottom < -400 || box.top > vh + 400) return;   // skip off-screen
-        var center = box.top + box.height / 2;
-        var offset = (center - vh / 2) * -it.speed;
-        if (it.frac != null) {                       // over-scanned media: free both ways (clipped)
-          var max = box.height * it.frac;
-          if (offset > max) offset = max; else if (offset < -max) offset = -max;
-        } else {                                     // in-flow blocks/text: drift up only, never into content below
-          if (offset > 0) offset = 0; else if (offset < -it.px) offset = -it.px;
-        }
-        if (it.cssVar) it.el.style.setProperty(it.cssVar, offset.toFixed(1) + 'px');
-        else it.el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
-      });
-      ticking = false;
-    };
-    var onScroll = function () { if (!ticking) { window.requestAnimationFrame(apply); ticking = true; } };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    apply();
-  }
 })();
