@@ -122,21 +122,6 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-parallax]'), function (el) {
     items.push({ el: el, ref: el.parentElement, speed: parseFloat(el.getAttribute('data-parallax')) || 0.15, frac: parseFloat(el.getAttribute('data-pmax')) || 0.2 });
   });
-  // in-flow elements: reference is self, clamp is fixed px; varied speeds create the depth
-  [['.hero__title', 0.08, 70], ['.hero__lead', 0.12, 55], ['.sec-title', 0.09, 55], ['.sec-intro', 0.035, 24],
-   ['.team__kicker', 0.05, 28], ['.contact__title', 0.10, 65], ['.contact__lead', 0.035, 24]]
-  .forEach(function (c) {
-    Array.prototype.forEach.call(document.querySelectorAll(c[0]), function (el) {
-      items.push({ el: el, ref: el, speed: c[1], px: c[2] });
-    });
-  });
-  // whole-box movers — the card/block drifts, the image inside never shifts
-  Array.prototype.forEach.call(document.querySelectorAll('.member'), function (el) {
-    items.push({ el: el, ref: el, speed: 0.05, px: 16, cssVar: '--py' }); // team card (composes with arc)
-  });
-  Array.prototype.forEach.call(document.querySelectorAll('.proj'), function (el) {
-    items.push({ el: el, ref: el, speed: 0.05, px: 26 });                 // work row block
-  });
 
   if (items.length && !reduce) {
     var ticking = false;
