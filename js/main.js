@@ -71,4 +71,31 @@
       if (next) next.addEventListener('click', function () { scrollToCard(Math.min(cards.length - 1, currentIndex() + 1)); });
     }
   }
+
+  /* ---- scroll reveal (subtle fade-up, staggered) ---- */
+  var SEL = '.sec-title,.sec-intro,.team__kicker,.svc,.proj,.member,.testi__card,' +
+            '.hero__title,.hero__lead,.hero__note,.contact__title,.contact__email,.contact__actions';
+  var reveal = Array.prototype.slice.call(document.querySelectorAll(SEL));
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!('IntersectionObserver' in window) || reduce) {
+    reveal.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    // stagger items inside a group (services, team, testimonials, projects)
+    reveal.forEach(function (el) {
+      if (el.matches('.svc, .member, .testi__card, .proj') && el.parentElement) {
+        var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) {
+          return c.matches && c.matches('.svc, .member, .testi__card, .proj');
+        });
+        var i = sibs.indexOf(el);
+        if (i > 0) el.style.transitionDelay = Math.min(i, 8) * 55 + 'ms';
+      }
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    reveal.forEach(function (el) { io.observe(el); });
+  }
 })();

@@ -73,7 +73,9 @@ button{ font:inherit; cursor:pointer; }
 @media (min-width:768px){ .sec-head{ margin-bottom:48px; } .sec-intro{ font-size:18px; max-width:30rem; } }
 @media (min-width:1024px){
   .sec-head--row{ display:flex; justify-content:space-between; align-items:flex-start; gap:40px; }
-  .sec-head--row .sec-intro{ margin-top:0; }
+  .sec-head--row .sec-title{ flex-shrink:0; }
+  .sec-head--row .sec-title .t-black{ white-space:nowrap; }
+  .sec-head--row .sec-intro{ margin-top:6px; max-width:34rem; }
 }
 
 /* ========================================================================== */
@@ -178,28 +180,31 @@ button{ font:inherit; cursor:pointer; }
 /* tablet: 3-col, grayscale + featured, overlay caption */
 @media (min-width:768px){
   .team-grid{ grid-template-columns:repeat(3,1fr); gap:34px 24px; }
-  .member__photo img{ filter:grayscale(1) contrast(1.06); transition:filter .45s ease; }
-  .member.is-featured .member__photo img{ filter:none; }
-  .member:hover .member__photo img{ filter:none; }
+  .member{ transition:transform .45s cubic-bezier(.2,.7,.2,1); will-change:transform; }
+  .member__photo{ transition:box-shadow .45s ease; }
+  .member__photo img{ filter:grayscale(1) contrast(1.06); transition:filter .55s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+  /* hover: card pops bigger + photo turns to colour */
+  .member:hover{ transform:translateY(var(--ty,0)) scale(1.06); z-index:3; }
+  .member:hover .member__photo{ box-shadow:0 20px 44px rgba(0,0,0,.2); }
+  .member:hover .member__photo img{ filter:none; transform:scale(1.04); }
   .member__cap{ position:absolute; left:0; right:0; bottom:0; margin:0; padding:10px 12px;
     background:rgba(255,255,255,.62); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
     border-radius:0 0 12px 12px; }
   .member__name{ font-size:13px; }
-  .member__role{ color:#54545c; font-size:10px; }
-  .member.is-featured{ box-shadow:0 14px 30px rgba(0,0,0,.14); border-radius:12px; }
+  .member__role{ color:var(--body); font-size:10px; }
 }
 
 /* desktop: fanned arc */
 @media (min-width:1440px){
   .team-grid{ display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:40px; }
-  .member{ width:162px; flex:0 0 auto; }
+  .member{ width:162px; flex:0 0 auto; transform:translateY(var(--ty,0)); }
   .member__photo{ aspect-ratio:162/214; }
-  .member:nth-child(1){ transform:translateY(64px); }
-  .member:nth-child(2){ transform:translateY(32px); }
-  .member:nth-child(3){ transform:translateY(0); }
-  .member:nth-child(4){ transform:translateY(16px); }
-  .member:nth-child(5){ transform:translateY(32px); }
-  .member:nth-child(6){ transform:translateY(64px); }
+  .member:nth-child(1){ --ty:64px; }
+  .member:nth-child(2){ --ty:32px; }
+  .member:nth-child(3){ --ty:0px; }
+  .member:nth-child(4){ --ty:16px; }
+  .member:nth-child(5){ --ty:32px; }
+  .member:nth-child(6){ --ty:64px; }
   .member.is-featured{ width:178px; }
 }
 @media (min-width:1920px){
@@ -288,5 +293,48 @@ button{ font:inherit; cursor:pointer; }
   .footer__bottom{ flex-direction:row; justify-content:space-between; align-items:center; }
 }
 
-/* reduced motion */
-@media (prefers-reduced-motion:reduce){ *{ scroll-behavior:auto !important; transition:none !important; } }
+/* ==========================================================================
+   INTERACTIONS — subtle micro-animations
+   ========================================================================== */
+/* animated nav underline */
+.nav__links a{ position:relative; }
+.nav__links a::after{ content:""; position:absolute; left:0; bottom:-5px; width:0; height:1.5px; background:currentColor; transition:width .3s cubic-bezier(.2,.7,.2,1); }
+.nav__links a:hover::after{ width:100%; }
+
+/* button arrow nudge */
+.btn span{ display:inline-block; transition:transform .3s ease; }
+.btn:hover span{ transform:translateX(4px); }
+.nav__cta{ transition:transform .2s ease, background .2s ease; }
+
+/* work: thumbnail zoom + link nudge */
+.proj__thumb{ overflow:hidden; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.proj:hover .proj__thumb{ transform:scale(1.03); }
+.proj .link{ display:inline-block; transition:transform .3s ease, color .2s ease; }
+.proj:hover .link{ transform:translateX(5px); }
+
+/* expertise: row nudge + accent number */
+.svc{ transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+.svc:hover{ transform:translateX(5px); }
+.svc .num{ transition:color .3s ease; }
+.svc:hover .num{ color:var(--accent); }
+
+/* testimonial card lift (tablet+) */
+@media (min-width:768px){
+  .testi__card{ transition:transform .4s ease, box-shadow .4s ease; }
+  .testi__card:hover{ transform:translateY(-5px); box-shadow:0 16px 36px rgba(0,0,0,.06); }
+}
+
+/* scroll reveal — progressive, only applied when JS is on */
+.js :is(.sec-title,.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__title,.hero__lead,.hero__note,.contact__title,.contact__email,.contact__actions){
+  opacity:0; transform:translateY(22px);
+  transition:opacity .7s ease, transform .85s cubic-bezier(.22,.7,.2,1);
+}
+.js .member{ opacity:0; transition:opacity .7s ease; }   /* opacity only — keeps arc transform */
+.js :is(.sec-title,.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__title,.hero__lead,.hero__note,.contact__title,.contact__email,.contact__actions).is-visible{ opacity:1; transform:none; }
+.js .member.is-visible{ opacity:1; }
+
+/* reduced motion: disable all of it */
+@media (prefers-reduced-motion:reduce){
+  *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+  .js :is(.sec-title,.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__title,.hero__lead,.hero__note,.contact__title,.contact__email,.contact__actions,.member){ opacity:1 !important; transform:none !important; }
+}
