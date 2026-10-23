@@ -99,21 +99,37 @@
     reveal.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- parallax scrolling ---- */
-  var px = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
-  if (px.length && !reduce) {
+  /* ---- parallax scrolling (whole page) ---- */
+  var items = [];
+  // over-scanned media (band + team photos): reference is the clipped parent, clamp is a fraction
+  Array.prototype.forEach.call(document.querySelectorAll('[data-parallax]'), function (el) {
+    items.push({ el: el, ref: el.parentElement, speed: parseFloat(el.getAttribute('data-parallax')) || 0.15, frac: parseFloat(el.getAttribute('data-pmax')) || 0.2 });
+  });
+  // in-flow elements: reference is self, clamp is fixed px; varied speeds create the depth
+  [['.hero__title', 0.07, 60], ['.hero__lead', 0.11, 50], ['.sec-title', 0.08, 45], ['.sec-intro', 0.035, 24],
+   ['.team__kicker', 0.05, 28], ['.proj__body h3', 0.06, 34], ['.contact__title', 0.09, 55], ['.contact__lead', 0.035, 24]]
+  .forEach(function (c) {
+    Array.prototype.forEach.call(document.querySelectorAll(c[0]), function (el) {
+      items.push({ el: el, ref: el, speed: c[1], px: c[2] });
+    });
+  });
+
+  if (items.length && !reduce) {
     var ticking = false;
     var apply = function () {
       var vh = window.innerHeight;
-      px.forEach(function (el) {
-        var box = el.parentElement.getBoundingClientRect();
-        if (box.bottom < -300 || box.top > vh + 300) return; // skip off-screen
-        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
+      items.forEach(function (it) {
+        var box = it.ref.getBoundingClientRect();
+        if (box.bottom < -400 || box.top > vh + 400) return;   // skip off-screen
         var center = box.top + box.height / 2;
-        var offset = (center - vh / 2) * -speed;
-        var max = box.height * 0.3;                 // clamp so no empty edges show
-        if (offset > max) offset = max; else if (offset < -max) offset = -max;
-        el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+        var offset = (center - vh / 2) * -it.speed;
+        if (it.frac != null) {                       // over-scanned media: free both ways (clipped)
+          var max = box.height * it.frac;
+          if (offset > max) offset = max; else if (offset < -max) offset = -max;
+        } else {                                     // in-flow text: drift up only, never into content below
+          if (offset > 0) offset = 0; else if (offset < -it.px) offset = -it.px;
+        }
+        it.el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
       });
       ticking = false;
     };
