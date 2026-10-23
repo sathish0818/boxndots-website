@@ -36,7 +36,7 @@
           <a href="#team">Our Team</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a class="btn btn--sm nav__cta" href="#contact">Book a call</a>
+        <a class="btn btn--sm nav__cta" href="#contact" data-book>Book a call</a>
       </div>
       <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span>
@@ -54,7 +54,7 @@
       <a href="#team">Our Team</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="btn menu__cta" href="#contact">Book a call</a>
+    <a class="btn menu__cta" href="#contact" data-book>Book a call</a>
   </div>
 
   <main>
@@ -190,7 +190,7 @@
           <a class="contact__email" href="mailto:hello@boxndots.com">hello@boxndots.com</a>
           <div class="contact__actions">
             <a class="btn btn--accent" href="mailto:hello@boxndots.com">Start a project <span aria-hidden="true">&rarr;</span></a>
-            <a class="btn btn--ghost" href="#contact">Book a call</a>
+            <a class="btn btn--ghost" href="#contact" data-book>Book a call</a>
           </div>
           <span class="contact__loc">Chennai, India &nbsp;·&nbsp; Available worldwide</span>
         </div>
@@ -223,6 +223,22 @@
       </div>
     </div>
   </footer>
+
+  <!-- BOOK A CALL MODAL -->
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Book a call" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <span class="eyebrow">LET&rsquo;S TALK</span>
+        <h2 class="modal__title"><span class="t-black">BOOK A</span><span class="t-serif">call.</span></h2>
+        <p class="modal__sub">Pick a time that suits you. You&rsquo;ll get a Google Meet link by email.</p>
+      </div>
+      <div class="modal__embed">
+        <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

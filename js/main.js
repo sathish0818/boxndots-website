@@ -23,6 +23,23 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) closeMenu(); });
   }
 
+  /* ---- book a call modal (Google Meet scheduling) ---- */
+  var bookBtns = document.querySelectorAll('[data-book]');
+  var modal = document.getElementById('bookModal');
+  if (modal && bookBtns.length) {
+    var frame = modal.querySelector('iframe');
+    var openModal = function (e) {
+      if (e) e.preventDefault();
+      if (frame && !frame.src && frame.getAttribute('data-src')) frame.src = frame.getAttribute('data-src');
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    };
+    var closeModal = function () { modal.hidden = true; document.body.style.overflow = ''; };
+    bookBtns.forEach(function (b) { b.addEventListener('click', openModal); });
+    modal.querySelectorAll('[data-close]').forEach(function (c) { c.addEventListener('click', closeModal); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+  }
+
   /* ---- testimonials carousel (mobile) ---- */
   var testi = document.querySelector('[data-testi]');
   if (testi) {
