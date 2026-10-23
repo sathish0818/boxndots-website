@@ -112,9 +112,11 @@ button{ font:inherit; cursor:pointer; }
 .hero__note{ display:flex; align-items:flex-start; gap:18px; margin-top:28px; }
 .hero__arrow{ width:clamp(64px,14vw,104px); height:auto; color:var(--ink); flex:0 0 auto; margin-top:6px; animation:arrowPoint 5s ease-in-out infinite; }
 @keyframes arrowPoint{
-  0%, 72%, 100%{ transform:translate(0,0); }
-  80%{ transform:translate(7px,4px); }
-  88%{ transform:translate(2px,1px); }
+  0%, 55%, 100%{ transform:translate(0,0); }
+  66%{ transform:translate(14px,8px); }
+  76%{ transform:translate(3px,2px); }
+  86%{ transform:translate(12px,7px); }
+  95%{ transform:translate(1px,1px); }
 }
 .hero__note p{ color:var(--body); font-size:15px; line-height:1.55; max-width:26rem; }
 @media (min-width:768px){ .hero__note p{ font-size:17px; } }
