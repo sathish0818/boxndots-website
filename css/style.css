@@ -158,7 +158,11 @@ button{ font:inherit; cursor:pointer; }
 /* ========================================================================== */
 .work-list{ display:flex; flex-direction:column; gap:36px; }
 .proj{ display:flex; flex-direction:column; gap:14px; }
-.proj__thumb{ width:100%; aspect-ratio:3/2; border-radius:12px; background:var(--c,#d9d9d9); }
+.proj__thumb{ width:100%; aspect-ratio:3/2; border-radius:12px; background:var(--c,#d9d9d9); overflow:hidden; display:block; }
+a.proj__thumb{ cursor:pointer; }
+.proj__thumb img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+.proj--case:hover .proj__thumb img,
+.proj__thumb:focus-visible img{ transform:scale(1.05); }
 .proj__body{ display:flex; flex-direction:column; gap:10px; }
 .proj__body h3{ font-family:var(--f-serif); font-weight:300; font-size:34px; line-height:1.02; }
 .proj__body p{ color:var(--body); font-size:15px; line-height:1.5; }
