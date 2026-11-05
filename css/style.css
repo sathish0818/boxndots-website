@@ -405,7 +405,8 @@ a.proj__thumb{ cursor:pointer; }
 .bg-off{ background:var(--off); } .bg-paper{ background:var(--paper); }
 .nav__back{ font-size:15px; color:var(--body); transition:color .2s; }
 .nav__back:hover{ color:var(--label); }
-.cs-kick{ display:inline-flex; gap:12px; align-items:center; }
+.nav__back{ display:inline-block; }
+.cs-kick{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
 .cs-kick .dot{ width:5px; height:5px; border-radius:50%; background:var(--accent); display:inline-block; }
 
 /* hero */

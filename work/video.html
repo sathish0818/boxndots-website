@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Editing · Post-Production Case Study · BoxnDots</title>
+  <title>Video Editing &amp; Motion · Case Study · BoxnDots</title>
   <meta name="description" content="Case study: film and video editing plus motion graphics by our expert in-house team. A reel of music videos, short films and teasers, plus narrative editing, colour and motion for directors and brands." />
   <link rel="icon" type="image/svg+xml" href="../assets/vectors/favicon.svg" />
   <link rel="canonical" href="https://boxndots-website.vercel.app/work/video.html" />
@@ -12,158 +12,16 @@
   <meta property="og:site_name" content="BoxnDots" />
   <meta property="og:title" content="Video Editing &amp; Motion · Case Study" />
   <meta property="og:description" content="Film and video post-production plus motion graphics by our expert team. A reel of music videos, a live session, a short film and teasers." />
-  <meta property="og:url" content="https://boxndots-website.vercel.app/work/video.html" />
   <meta property="og:image" content="https://boxndots-website.vercel.app/assets/images/work/video/cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://boxndots-website.vercel.app/assets/images/work/video/cover.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;900&family=Fraunces:opsz,wght@9..144,300;9..144,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;900&family=Fraunces:opsz,wght@9..144,300&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
-  <style>
-  /* ===== Video editing case study - cinematic dark + coral ===== */
-  :root{
-    --vd-bg:#0C0C0E; --vd-panel:#151518; --vd-panel2:#1C1C20;
-    --vd-ink:#F4F2EC; --vd-mut:#97979E;
-    --vd-accent:#FF5A3C; --vd-glow:rgba(255,90,60,.35);
-    --vd-line:#26262B;
-  }
-  body.cine{ background:var(--vd-bg); color:var(--vd-ink); }
-  .cine a{ color:inherit; }
-  .cw{ width:100%; max-width:1240px; margin-inline:auto; padding-inline:22px; }
-  @media (min-width:768px){ .cw{ padding-inline:44px; } }
-  @media (min-width:1024px){ .cw{ padding-inline:64px; } }
-
-  .mono{ font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.28em; text-transform:uppercase; }
-  .kick{ color:var(--vd-accent); } .kick--mut{ color:var(--vd-mut); }
-  .serif{ font-family:var(--f-serif); font-weight:300; }
-
-  /* nav */
-  .nv{ position:sticky; top:0; z-index:40; background:rgba(12,12,14,.8); backdrop-filter:blur(10px); border-bottom:1px solid var(--vd-line); }
-  .nv__in{ display:flex; align-items:center; justify-content:space-between; height:64px; }
-  .nv__logo .logo{ height:28px; width:auto; color:var(--vd-ink); }
-  .nv__r{ display:flex; align-items:center; gap:10px; }
-  .nv__back{ font-size:14px; color:var(--vd-mut); transition:color .2s; }
-  .nv__back:hover{ color:var(--vd-ink); }
-  .cine .nv__cta{ display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 18px; border-radius:999px; background:var(--vd-accent); color:#160a07; font-weight:600; font-size:14px; transition:transform .25s, box-shadow .25s; }
-  .nv__cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px var(--vd-glow); }
-  @media (max-width:560px){ .nv__back{ display:none; } }
-
-  /* hero */
-  .hero{ position:relative; overflow:hidden; padding:70px 0 54px; border-bottom:1px solid var(--vd-line);
-    background:radial-gradient(90% 80% at 85% 0%, rgba(255,90,60,.14), transparent 55%), linear-gradient(180deg,#121214,#0C0C0E); }
-  .hero__kicks{ display:flex; gap:12px; align-items:center; margin-bottom:22px; }
-  .hero__dot{ width:5px; height:5px; border-radius:50%; background:var(--vd-accent); }
-  .hero__t{ font-family:var(--f-sans); font-weight:900; text-transform:uppercase; letter-spacing:-.02em; line-height:.92; font-size:clamp(48px,10vw,120px); margin:0; }
-  .hero__t em{ font-family:var(--f-serif); font-weight:300; font-style:italic; text-transform:none; letter-spacing:-.01em; color:var(--vd-accent); }
-  .hero__lead{ font-size:clamp(16px,2.6vw,19px); line-height:1.6; color:var(--vd-mut); max-width:58ch; margin:28px 0 0; }
-  .hero__lead strong{ color:var(--vd-ink); font-weight:500; }
-  .hero__row{ display:flex; flex-wrap:wrap; gap:12px; margin:32px 0 0; }
-  .btnx{ display:inline-flex; align-items:center; gap:9px; height:50px; padding:0 24px; border-radius:999px; font-weight:500; font-size:15px; transition:transform .25s, box-shadow .25s, border-color .25s, color .25s; cursor:pointer; }
-  .cine .btnx--accent{ background:var(--vd-accent); color:#160a07; font-weight:600; }
-  .btnx--accent:hover{ transform:translateY(-2px); box-shadow:0 14px 34px var(--vd-glow); }
-  .cine .btnx--ghost{ border:1px solid var(--vd-line); color:var(--vd-ink); background:rgba(255,255,255,.02); }
-  .btnx--ghost:hover{ transform:translateY(-2px); border-color:var(--vd-accent); color:var(--vd-accent); }
-
-  /* stats */
-  .stats{ border-bottom:1px solid var(--vd-line); }
-  .stats__g{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px 18px; padding:34px 0; }
-  @media (min-width:768px){ .stats__g{ grid-template-columns:repeat(4,1fr); } }
-  .stat__n{ font-family:var(--f-serif); font-weight:300; font-size:clamp(34px,5vw,48px); line-height:1; }
-  .stat__n span{ color:var(--vd-accent); }
-  .stat__l{ font-size:13px; color:var(--vd-mut); margin-top:10px; line-height:1.4; }
-
-  /* sections */
-  .sec{ padding:66px 0; border-bottom:1px solid var(--vd-line); }
-  @media (min-width:1024px){ .sec{ padding:92px 0; } }
-  .sec__head{ max-width:62ch; }
-  .sec__t{ font-family:var(--f-serif); font-weight:300; line-height:1.03; font-size:clamp(30px,5.4vw,52px); letter-spacing:-.01em; margin:16px 0 0; }
-  .sec__p{ font-size:clamp(15px,2.3vw,17px); line-height:1.7; color:var(--vd-mut); margin:20px 0 0; max-width:60ch; }
-  .sec__p strong{ color:var(--vd-ink); font-weight:500; }
-
-  /* video grid */
-  .reel{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:44px; }
-  @media (min-width:640px){ .reel{ grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:1000px){ .reel{ grid-template-columns:repeat(3,1fr); } }
-  .vid{ position:relative; border:1px solid var(--vd-line); border-radius:14px; overflow:hidden; background:var(--vd-panel); cursor:pointer; text-align:left; padding:0; color:inherit; font:inherit; display:block; width:100%; }
-  .vid--feat{ grid-column:1 / -1; }
-  @media (min-width:1000px){ .vid--feat{ grid-column:span 2; grid-row:span 1; } }
-  .vid__media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#000; }
-  .vid__media img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.22,1,.36,1); opacity:.9; }
-  .vid:hover .vid__media img{ transform:scale(1.06); opacity:1; }
-  .vid__grad{ position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(8,8,10,.82) 100%); }
-  .vid__play{ position:absolute; left:16px; bottom:16px; width:46px; height:46px; border-radius:50%; background:var(--vd-accent); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px var(--vd-glow); transition:transform .3s; }
-  .vid:hover .vid__play{ transform:scale(1.08); }
-  .vid__play svg{ width:16px; height:16px; margin-left:2px; fill:#160a07; }
-  .vid--feat .vid__play{ width:62px; height:62px; } .vid--feat .vid__play svg{ width:22px; height:22px; }
-  .vid__meta{ position:absolute; right:16px; bottom:18px; left:74px; }
-  .vid__role{ font-family:var(--f-mono); font-weight:500; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--vd-accent); }
-  .vid__ttl{ font-family:var(--f-serif); font-weight:400; font-size:19px; line-height:1.1; margin-top:5px; }
-  .vid--feat .vid__ttl{ font-size:28px; }
-  .reel__note{ font-size:13px; color:var(--vd-mut); margin-top:16px; text-align:center; }
-
-  /* capabilities */
-  .caps{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:44px; }
-  @media (min-width:680px){ .caps{ grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:1000px){ .caps{ grid-template-columns:repeat(3,1fr); } }
-  .cap{ background:var(--vd-panel); border:1px solid var(--vd-line); border-radius:16px; padding:24px; }
-  .cap__i{ font-size:22px; }
-  .cap__t{ font-family:var(--f-serif); font-weight:400; font-size:20px; margin:14px 0 0; }
-  .cap__p{ font-size:14px; line-height:1.6; color:var(--vd-mut); margin:10px 0 0; }
-
-  /* credits timeline */
-  .cred{ margin-top:44px; border-top:1px solid var(--vd-line); }
-  .cred__row{ display:grid; grid-template-columns:110px 1fr; gap:16px; padding:22px 0; border-bottom:1px solid var(--vd-line); align-items:baseline; }
-  @media (min-width:768px){ .cred__row{ grid-template-columns:160px 1fr auto; } }
-  .cred__yr{ font-family:var(--f-mono); font-weight:500; font-size:12px; letter-spacing:.1em; color:var(--vd-mut); }
-  .cred__ttl{ font-family:var(--f-serif); font-weight:400; font-size:21px; }
-  .cred__role{ font-family:var(--f-mono); font-weight:500; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--vd-accent); }
-
-  /* toolkit */
-  .tools{ display:flex; flex-wrap:wrap; gap:10px; margin-top:36px; }
-  .tool{ font-size:14px; padding:10px 18px; border:1px solid var(--vd-line); border-radius:999px; background:var(--vd-panel); color:var(--vd-ink); }
-
-  /* cta + footer */
-  .cta{ padding:92px 0; text-align:center; background:radial-gradient(90% 120% at 50% 0%, rgba(255,90,60,.12), transparent 60%); }
-  .cta__t{ font-family:var(--f-serif); font-weight:300; font-size:clamp(36px,7vw,72px); line-height:1.0; letter-spacing:-.01em; }
-  .cta__row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:30px; }
-  .ft{ border-top:1px solid var(--vd-line); padding:38px 0; }
-  .ft__in{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
-  .ft__links{ display:flex; gap:20px; flex-wrap:wrap; }
-  .ft__links a{ font-size:14px; color:var(--vd-mut); } .ft__links a:hover{ color:var(--vd-ink); }
-  .ft__c{ font-size:13px; color:var(--vd-mut); }
-
-  /* reveal */
-  .rv{ opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-  .rv.in{ opacity:1; transform:none; }
-  html:not(.js) .rv{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion:reduce){ .rv{ opacity:1; transform:none; transition:none; } }
-
-  /* lightbox */
-  #lb[hidden]{ display:none; }
-  #lb{ position:fixed; inset:0; z-index:90; display:flex; align-items:center; justify-content:center; padding:20px; }
-  #lb .lb__ov{ position:absolute; inset:0; background:rgba(4,4,6,.86); backdrop-filter:blur(6px); }
-  #lb .lb__box{ position:relative; width:100%; max-width:1040px; }
-  #lb .lb__frame{ position:relative; aspect-ratio:16/9; width:100%; border-radius:14px; overflow:hidden; border:1px solid var(--vd-line); background:#000; box-shadow:0 40px 100px -30px rgba(0,0,0,.9); }
-  #lb iframe{ width:100%; height:100%; border:0; }
-  #lb .lb__cap{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:14px; }
-  #lb .lb__ttl{ font-family:var(--f-serif); font-weight:400; font-size:20px; }
-  #lb .lb__x{ width:40px; height:40px; border-radius:50%; border:1px solid var(--vd-line); background:rgba(20,20,24,.8); color:var(--vd-ink); font-size:20px; line-height:1; cursor:pointer; flex:0 0 auto; }
-  #lb .lb__x:hover{ border-color:var(--vd-accent); color:var(--vd-accent); }
-
-  /* book-a-call modal */
-  #bookModal[hidden]{ display:none; }
-  #bookModal{ position:fixed; inset:0; z-index:95; display:flex; align-items:center; justify-content:center; padding:20px; }
-  #bookModal .m__ov{ position:absolute; inset:0; background:rgba(4,4,6,.82); backdrop-filter:blur(4px); }
-  #bookModal .m__box{ position:relative; width:100%; max-width:760px; background:var(--vd-panel); border:1px solid var(--vd-line); border-radius:18px; overflow:hidden; }
-  #bookModal .m__head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:24px 24px 16px; }
-  #bookModal .m__x{ width:38px; height:38px; border-radius:50%; border:1px solid var(--vd-line); background:none; color:var(--vd-ink); font-size:20px; cursor:pointer; flex:0 0 auto; }
-  #bookModal iframe{ width:100%; height:560px; max-height:70vh; border:0; background:#fff; }
-  </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="cine">
-
+<body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="logo" viewBox="0 0 88 64">
       <path d="M33.8837 8.63479H0V37.3754H33.8837V8.63479Z" fill="currentColor"/>
@@ -175,123 +33,135 @@
   </svg>
 
   <!-- NAV -->
-  <header class="nv">
-    <div class="cw nv__in">
-      <a class="nv__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <div class="nv__r">
-        <a class="nv__back" href="../index.html#work">&larr; All work</a>
-        <a class="nv__cta" href="#" data-book>Book a call</a>
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
+      <div class="nav__right">
+        <nav class="nav__links" aria-label="Primary">
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#expertise">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+        <a class="btn btn--sm nav__cta" href="#" data-book>Book a call</a>
       </div>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
+  <div class="menu" id="mobileMenu" hidden>
+    <button class="menu__close" aria-label="Close menu">&times;</button>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#expertise">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="btn menu__cta" href="#" data-book>Book a call</a>
+  </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="cw">
-      <div class="hero__kicks rv"><span class="mono kick">Video Editing & Motion</span><span class="hero__dot"></span><span class="mono kick--mut">Post-production · All formats</span></div>
-      <h1 class="hero__t rv">I edit for emotion.<br/>I <em>cut</em> for impact.</h1>
-      <p class="hero__lead rv">BoxnDots cuts with an <strong>expert in-house editing and motion team</strong>, 6+ years deep in post across <strong>every kind of content</strong>, from feature and short films to documentaries, music videos, commercials, brand campaigns and motion graphics. From first rough cut to final export, we turn raw footage into stories that connect.</p>
-      <div class="hero__row rv">
-        <a class="btnx btnx--accent" href="#reel">Watch the reel</a>
-        <a class="btnx btnx--ghost" href="#" data-book>Book a call</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats">
-    <div class="cw stats__g">
-      <div class="rv"><div class="stat__n">6<span>+</span></div><div class="stat__l">Years in post-production</div></div>
-      <div class="rv"><div class="stat__n">40<span>+</span></div><div class="stat__l">Projects cut and delivered</div></div>
-      <div class="rv"><div class="stat__n">6</div><div class="stat__l">Domains, from film to brand</div></div>
-      <div class="rv"><div class="stat__n">9</div><div class="stat__l">Selected edits you can watch below</div></div>
-    </div>
-  </section>
-
-  <!-- THE REEL -->
-  <section class="sec" id="reel">
-    <div class="cw">
-      <div class="sec__head rv">
-        <span class="mono kick">Selected edits</span>
-        <h2 class="sec__t">The work. Tap any edit to watch.</h2>
-        <p class="sec__p">A run of music videos, a live session, a short film and a teaser. Rhythm-first cuts synced to the beat, character-driven storytelling, and punchy promos. Every one cut by our team.</p>
-      </div>
-      <div class="reel rv" id="reel-grid"></div>
-      <p class="reel__note">Tap any edit to watch. Each one opens and plays right here.</p>
-    </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section class="sec">
-    <div class="cw">
-      <div class="sec__head rv">
-        <span class="mono kick">What we cut</span>
-        <h2 class="sec__t">From first rough cut to final export.</h2>
-      </div>
-      <div class="caps">
-        <div class="cap rv"><div class="cap__i">🎞️</div><div class="cap__t">Narrative editing</div><div class="cap__p">Feature and short films: pacing, structure and emotional storytelling from first cut to final.</div></div>
-        <div class="cap rv"><div class="cap__i">🎨</div><div class="cap__t">Colour & finishing</div><div class="cap__p">DaVinci Resolve grading, look development and clean deliverables ready for any screen.</div></div>
-        <div class="cap rv"><div class="cap__i">✨</div><div class="cap__t">Motion graphics & VFX</div><div class="cap__p">After Effects motion graphics, animated titles, lower thirds, montages and visual effects that lift the story without stealing it.</div></div>
-        <div class="cap rv"><div class="cap__i">🎵</div><div class="cap__t">Music videos</div><div class="cap__p">Rhythm-first edits synced to the beat, energetic cuts built for artists and labels.</div></div>
-        <div class="cap rv"><div class="cap__i">🎥</div><div class="cap__t">Documentaries</div><div class="cap__p">Honest, character-driven edits that respect the footage and find the truth in it.</div></div>
-        <div class="cap rv"><div class="cap__i">📣</div><div class="cap__t">Commercials & brand</div><div class="cap__p">Punchy campaign edits and corporate films crafted to convert and stay on brand.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDITS -->
-  <section class="sec">
-    <div class="cw">
-      <div class="sec__head rv">
-        <span class="mono kick">Where we work</span>
-        <h2 class="sec__t">Every kind of content, start to finish.</h2>
-        <p class="sec__p">We have cut across just about every format. Whatever the footage and whoever it is for, we find the story in it and ship a clean, finished edit.</p>
-      </div>
-      <div class="tools rv">
-        <span class="tool">Narrative films</span>
-        <span class="tool">Short films</span>
-        <span class="tool">Documentaries</span>
-        <span class="tool">Music videos</span>
-        <span class="tool">Commercials</span>
-        <span class="tool">Brand campaigns</span>
-        <span class="tool">Motion graphics</span>
-        <span class="tool">Social & reels</span>
-        <span class="tool">Live sessions</span>
-      </div>
-      <div class="rv" style="margin-top:34px;">
-        <div class="mono kick--mut" style="margin-bottom:16px;">Our toolkit</div>
-        <div class="tools" style="margin-top:0;">
-          <span class="tool">Final Cut Pro</span>
-          <span class="tool">DaVinci Resolve</span>
-          <span class="tool">After Effects</span>
-          <span class="tool">Photoshop</span>
-          <span class="tool">Illustrator</span>
+  <main>
+    <!-- HERO -->
+    <section class="section hero bg-off">
+      <div class="wrap">
+        <a class="nav__back cs-reveal" href="../index.html#work">&larr; All work</a>
+        <div class="cs-kick cs-reveal" style="margin-top:16px;"><span class="eyebrow">Video Editing &amp; Motion</span><span class="dot"></span><span class="eyebrow" style="color:var(--mut);">Post-production · All formats</span></div>
+        <h1 class="cs-hero__title sec-title cs-reveal"><span class="t-black">CUT FOR</span><span class="t-serif">impact.</span></h1>
+        <p class="cs-lead cs-reveal">BoxnDots cuts with an <strong>expert in-house editing and motion team</strong>, 6+ years deep in post across every kind of content, from feature and short films to documentaries, music videos, commercials, brand campaigns and motion graphics. From first rough cut to final export, we turn raw footage into stories that connect.</p>
+        <div class="cs-actions cs-reveal">
+          <a class="btn btn--accent" href="#reel">Watch the reel <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--line" href="#" data-book>Book a call</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="cw">
-      <h2 class="cta__t rv">Have footage that<br/>deserves a story?</h2>
-      <div class="cta__row rv">
-        <a class="btnx btnx--accent" href="#" data-book>Book a call</a>
-        <a class="btnx btnx--ghost" href="mailto:hello@boxndots.com">Start a project &rarr;</a>
+    <!-- STATS -->
+    <section class="cs-meta bg-off">
+      <div class="wrap cs-stats" style="padding:34px 0; margin-top:0;">
+        <div class="cs-reveal"><div class="cs-stat__n">6<span>+</span></div><div class="cs-stat__l">Years in post-production</div></div>
+        <div class="cs-reveal"><div class="cs-stat__n">40<span>+</span></div><div class="cs-stat__l">Projects cut and delivered</div></div>
+        <div class="cs-reveal"><div class="cs-stat__n">6</div><div class="cs-stat__l">Domains, from film to brand</div></div>
+        <div class="cs-reveal"><div class="cs-stat__n">9</div><div class="cs-stat__l">Selected edits you can watch</div></div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- THE REEL -->
+    <section class="section bg-paper" id="reel">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">Selected edits</span>
+          <h2 class="cs-ttl cs-reveal">The work. Tap any edit to watch.</h2>
+          <p class="cs-p cs-reveal">A run of music videos, a live session, a short film and a teaser. Rhythm-first cuts synced to the beat, character-driven storytelling, and punchy promos. Every one cut by our team.</p>
+        </div>
+        <div class="cs-reel cs-reveal" id="reel-grid"></div>
+        <p class="cs-reel__note">Tap any edit to watch. Each one opens and plays right here.</p>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section bg-off">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">What we cut</span>
+          <h2 class="cs-ttl cs-reveal">From first rough cut to final export.</h2>
+        </div>
+        <div class="cs-cards cs-cards--3">
+          <div class="cs-card cs-reveal"><span class="cs-card__i">🎞️</span><div class="cs-card__t">Narrative editing</div><div class="cs-card__p">Feature and short films: pacing, structure and emotional storytelling from first cut to final.</div></div>
+          <div class="cs-card cs-reveal"><span class="cs-card__i">🎨</span><div class="cs-card__t">Colour &amp; finishing</div><div class="cs-card__p">DaVinci Resolve grading, look development and clean deliverables ready for any screen.</div></div>
+          <div class="cs-card cs-reveal"><span class="cs-card__i">✨</span><div class="cs-card__t">Motion graphics &amp; VFX</div><div class="cs-card__p">After Effects motion graphics, animated titles, lower thirds, montages and visual effects that lift the story.</div></div>
+          <div class="cs-card cs-reveal"><span class="cs-card__i">🎵</span><div class="cs-card__t">Music videos</div><div class="cs-card__p">Rhythm-first edits synced to the beat, energetic cuts built for artists and labels.</div></div>
+          <div class="cs-card cs-reveal"><span class="cs-card__i">🎥</span><div class="cs-card__t">Documentaries</div><div class="cs-card__p">Honest, character-driven edits that respect the footage and find the truth in it.</div></div>
+          <div class="cs-card cs-reveal"><span class="cs-card__i">📣</span><div class="cs-card__t">Commercials &amp; brand</div><div class="cs-card__p">Punchy campaign edits and corporate films crafted to convert and stay on brand.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAINS + TOOLKIT -->
+    <section class="section bg-paper">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">Where we work</span>
+          <h2 class="cs-ttl cs-reveal">Every kind of content, start to finish.</h2>
+          <p class="cs-p cs-reveal">We have cut across just about every format. Whatever the footage and whoever it is for, we find the story in it and ship a clean, finished edit.</p>
+        </div>
+        <div class="cs-tags cs-reveal">
+          <span class="cs-tag">Narrative films</span><span class="cs-tag">Short films</span><span class="cs-tag">Documentaries</span><span class="cs-tag">Music videos</span><span class="cs-tag">Commercials</span><span class="cs-tag">Brand campaigns</span><span class="cs-tag">Motion graphics</span><span class="cs-tag">Social &amp; reels</span><span class="cs-tag">Live sessions</span>
+        </div>
+        <div class="cs-reveal" style="margin-top:34px;">
+          <span class="eyebrow">Our toolkit</span>
+          <div class="cs-tags" style="margin-top:14px;">
+            <span class="cs-tag">Final Cut Pro</span><span class="cs-tag">DaVinci Resolve</span><span class="cs-tag">After Effects</span><span class="cs-tag">Photoshop</span><span class="cs-tag">Illustrator</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section contact">
+      <div class="wrap contact__inner">
+        <h2 class="contact__title cs-reveal"><span class="t-black">GOT</span><span class="t-serif">footage?</span></h2>
+        <div class="contact__body">
+          <p class="contact__lead cs-reveal">Have a film, music video or brand campaign that deserves a story? Tell us about it.</p>
+          <div class="contact__actions cs-reveal">
+            <a class="btn btn--accent" href="#" data-book>Book a call <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost" href="mailto:hello@boxndots.com">Start a project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer class="ft">
-    <div class="cw ft__in">
-      <a class="nv__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <nav class="ft__links">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#expertise">Services</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <span class="ft__c">© 2025 BoxnDots. Case study.</span>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="footer__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" aria-hidden="true"><use href="#logo"></use></svg></a>
+          <p>Creative &amp; branding studio. We build brands people remember.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div class="footer__col"><span class="eyebrow">STUDIO</span><a href="../index.html#work">Work</a><a href="../index.html#expertise">Services</a><a href="../index.html#contact">Contact</a></div>
+          <div class="footer__col"><span class="eyebrow">SOCIAL</span><a href="https://www.instagram.com/boxndots/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/boxndots/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/aarchana" target="_blank" rel="noopener">Behance</a></div>
+        </nav>
+      </div>
+      <div class="footer__bottom"><span>© 2026 BoxnDots. All rights reserved.</span><span>Made with care in Chennai.</span></div>
     </div>
   </footer>
 
@@ -300,19 +170,23 @@
     <div class="lb__ov" data-close></div>
     <div class="lb__box">
       <div class="lb__frame"><iframe id="lbFrame" title="Video" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>
-      <div class="lb__cap"><span class="lb__ttl" id="lbTitle"></span><button class="lb__x" type="button" data-close aria-label="Close">&times;</button></div>
+      <div class="lb__cap"><span class="lb__t" id="lbTitle"></span><button class="lb__x" type="button" data-close aria-label="Close">&times;</button></div>
     </div>
   </div>
 
   <!-- BOOK A CALL MODAL -->
-  <div id="bookModal" hidden>
-    <div class="m__ov" data-close-book></div>
-    <div class="m__box" role="dialog" aria-modal="true" aria-label="Book a call">
-      <div class="m__head">
-        <div><div class="serif" style="font-size:28px;">Book a call</div><div style="font-size:14px; color:var(--vd-mut); margin-top:6px;">Pick a time that suits you. We will meet over Google Meet.</div></div>
-        <button class="m__x" type="button" data-close-book aria-label="Close">&times;</button>
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Book a call" hidden>
+    <div class="modal__overlay" data-close-book></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close-book aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <span class="eyebrow">LET&rsquo;S TALK</span>
+        <h2 class="modal__title"><span class="t-black">BOOK A</span><span class="t-serif">call.</span></h2>
+        <p class="modal__sub">Pick a time that suits you. You&rsquo;ll get a Google Meet link by email.</p>
       </div>
-      <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      <div class="modal__embed">
+        <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 
@@ -334,54 +208,37 @@
     var grid=document.getElementById('reel-grid');
     VIDEOS.forEach(function(v){
       var b=document.createElement('button');
-      b.className='vid'+(v.feat?' vid--feat':'');
-      b.type='button';
-      b.setAttribute('aria-label','Play '+v.t);
-      b.setAttribute('data-id',v.id);
-      b.setAttribute('data-title',v.t+' · '+v.r);
-      b.innerHTML=''+
-        '<div class="vid__media">'+
-          '<img loading="lazy" alt="'+v.t+'" src="https://img.youtube.com/vi/'+v.id+'/maxresdefault.jpg" '+
-            'onerror="this.onerror=null;this.src=\'https://img.youtube.com/vi/'+v.id+'/hqdefault.jpg\'">'+
-          '<div class="vid__grad"></div>'+
-          '<div class="vid__play">'+PLAY+'</div>'+
-          '<div class="vid__meta"><div class="vid__role">'+v.r+'</div><div class="vid__ttl">'+v.t+'</div></div>'+
-        '</div>';
+      b.className='cs-vid'+(v.feat?' cs-vid--feat':'');
+      b.type='button'; b.setAttribute('aria-label','Play '+v.t);
+      b.setAttribute('data-id',v.id); b.setAttribute('data-title',v.t+' · '+v.r);
+      b.innerHTML='<div class="cs-vid__m"><img loading="lazy" alt="'+v.t+'" src="https://img.youtube.com/vi/'+v.id+'/maxresdefault.jpg" onerror="this.onerror=null;this.src=\'https://img.youtube.com/vi/'+v.id+'/hqdefault.jpg\'"><div class="cs-vid__grad"></div><div class="cs-vid__play">'+PLAY+'</div><div class="cs-vid__meta"><div class="cs-vid__role">'+v.r+'</div><div class="cs-vid__t">'+v.t+'</div></div></div>';
       grid.appendChild(b);
     });
-
-    /* lightbox */
-    var lb=document.getElementById('lb'), lbFrame=document.getElementById('lbFrame'), lbTitle=document.getElementById('lbTitle');
-    function openLb(id,title){
-      lbFrame.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
-      lbTitle.textContent=title||'';
-      lb.hidden=false; document.body.style.overflow='hidden';
+    var lb=document.getElementById('lb'), lbF=document.getElementById('lbFrame'), lbT=document.getElementById('lbTitle');
+    function openLb(id,title){ lbF.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1'; lbT.textContent=title||''; lb.hidden=false; document.body.style.overflow='hidden'; }
+    function closeLb(){ lb.hidden=true; lbF.src=''; document.body.style.overflow=''; }
+    grid.addEventListener('click',function(e){ var c=e.target.closest('.cs-vid'); if(!c)return; openLb(c.getAttribute('data-id'),c.getAttribute('data-title')); });
+    lb.querySelectorAll('[data-close]').forEach(function(c){ c.addEventListener('click',closeLb); });
+    /* mobile menu */
+    var burger=document.querySelector('.nav__burger'), menu=document.getElementById('mobileMenu');
+    if(burger&&menu){var mc=menu.querySelector('.menu__close');
+      var mo=function(){menu.hidden=false;burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';};
+      var ms=function(){menu.hidden=true;burger.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+      burger.addEventListener('click',mo); if(mc)mc.addEventListener('click',ms);
+      menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',ms);});
     }
-    function closeLb(){ lb.hidden=true; lbFrame.src=''; document.body.style.overflow=''; }
-    grid.addEventListener('click',function(e){
-      var card=e.target.closest('.vid'); if(!card) return;
-      openLb(card.getAttribute('data-id'), card.getAttribute('data-title'));
-    });
-    lb.querySelectorAll('[data-close]').forEach(function(c){ c.addEventListener('click', closeLb); });
-
     /* book modal */
-    var modal=document.getElementById('bookModal');
-    var frame=modal.querySelector('iframe');
-    function openBook(e){ if(e) e.preventDefault(); if(frame && !frame.src && frame.getAttribute('data-src')) frame.src=frame.getAttribute('data-src'); modal.hidden=false; document.body.style.overflow='hidden'; }
-    function closeBook(){ modal.hidden=true; document.body.style.overflow=''; }
-    document.querySelectorAll('[data-book]').forEach(function(b){ b.addEventListener('click', openBook); });
-    modal.querySelectorAll('[data-close-book]').forEach(function(c){ c.addEventListener('click', closeBook); });
-
-    document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!lb.hidden) closeLb(); if(!modal.hidden) closeBook(); } });
-
+    var modal=document.getElementById('bookModal'); var frame=modal.querySelector('iframe');
+    function bo(e){ if(e)e.preventDefault(); if(frame&&!frame.src&&frame.getAttribute('data-src'))frame.src=frame.getAttribute('data-src'); modal.hidden=false; document.body.style.overflow='hidden'; }
+    function bs(){ modal.hidden=true; document.body.style.overflow=''; }
+    document.querySelectorAll('[data-book]').forEach(function(b){ b.addEventListener('click',bo); });
+    modal.querySelectorAll('[data-close-book]').forEach(function(c){ c.addEventListener('click',bs); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!lb.hidden)closeLb(); if(!modal.hidden)bs(); if(menu&&!menu.hidden)menu.hidden=true; } });
     /* reveal */
-    var items=[].slice.call(document.querySelectorAll('.rv'));
-    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!('IntersectionObserver' in window) || reduce){ items.forEach(function(el){ el.classList.add('in'); }); }
-    else{
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold:0.08, rootMargin:'0px 0px -5% 0px' });
-      items.forEach(function(el){ io.observe(el); });
-    }
+    var items=[].slice.call(document.querySelectorAll('.cs-reveal,.cs-fade'));
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!('IntersectionObserver' in window)||reduce){items.forEach(function(el){el.classList.add('is-visible');});}
+    else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -5% 0px'});items.forEach(function(el){io.observe(el);});}
   })();
   </script>
 </body>
