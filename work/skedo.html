@@ -21,8 +21,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
-  /* ===== Skedo case study - warm cream, forest green, serif ===== */
+  /* ===== Skedo case study - PAGE CHROME uses the BoxnDots system ===== */
   :root{
+    --sk-paper:#fafaf6; --sk-paper2:#ffffff;
+    --sk-ink:#141416; --sk-mut:#6b6b73;
+    --sk-green:#91b5a7; --sk-green-d:#5c8073;
+    --sk-dot:#5c8073; --sk-amber:#91b5a7;
+    --sk-line:#e7e7e2; --sk-card:#ffffff;
+    --sk-fill:#91b5a7; --sk-empty:#e7e7e2;
+  }
+  /* the rebuilt Skedo product screens keep the real Skedo palette (the work shown) */
+  .device, .sk-demo{
     --sk-paper:#F6F3EC; --sk-paper2:#F1ECE1;
     --sk-ink:#20231E; --sk-mut:#6E7064;
     --sk-green:#2C4034; --sk-green-d:#1F2E25;
@@ -30,7 +39,7 @@
     --sk-line:#E5E1D6; --sk-card:#FFFFFF;
     --sk-fill:#2C4034; --sk-empty:#E4E0D4;
   }
-  body.case2{ background:var(--sk-paper); color:var(--sk-ink); }
+  body.case2{ background:var(--off); color:var(--ink); }
   .case2 a{ color:inherit; }
   .cw{ width:100%; max-width:1200px; margin-inline:auto; padding-inline:22px; }
   @media (min-width:768px){ .cw{ padding-inline:44px; } }
@@ -226,25 +235,40 @@
   </svg>
 
   <!-- NAV -->
-  <header class="nv">
-    <div class="cw nv__in">
-      <a class="nv__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <div class="nv__r">
-        <a class="nv__back" href="../index.html#work">&larr; All work</a>
-        <a class="nv__cta" href="#" data-book>Book a call</a>
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
+      <div class="nav__right">
+        <nav class="nav__links" aria-label="Primary">
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#expertise">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+        <a class="btn btn--sm nav__cta" href="#" data-book>Book a call</a>
       </div>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
+  <div class="menu" id="mobileMenu" hidden>
+    <button class="menu__close" aria-label="Close menu">&times;</button>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#expertise">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="btn menu__cta" href="#" data-book>Book a call</a>
+  </div>
 
   <!-- HERO -->
-  <section class="hero2">
-    <div class="cw">
-      <div class="tagrow rv"><span class="mono kick">Product · UX / UI</span><span class="tagdot"></span><span class="mono kick--mut">Live · 20 seats · one hour</span></div>
-      <h1 class="hero2__t rv">Twenty seats, so your question gets answered.</h1>
-      <p class="hero2__lead rv"><strong>Skedo</strong> is a marketplace for one-hour live workshops. Forty minutes of someone building in front of you, then twenty minutes where you can actually ask. I designed the product end to end, the learner side and the teacher side, around one promise and the trust it takes to keep it.</p>
-      <div class="hero2__row rv">
-        <a class="btnx btnx--green" href="https://skedo-livid.vercel.app/" target="_blank" rel="noopener">See it live <span aria-hidden="true">↗</span></a>
-        <a class="btnx btnx--ghost" href="#problem">Read the case study</a>
+  <section class="section hero bg-off">
+    <div class="wrap">
+      <a class="nav__back rv" href="../index.html#work">&larr; All work</a>
+      <div class="cs-kick rv" style="margin-top:16px;"><span class="eyebrow">Product · UX / UI</span><span class="dot"></span><span class="eyebrow" style="color:var(--mut);">Live · 20 seats · one hour</span></div>
+      <h1 class="cs-hero__title sec-title rv"><span class="t-black">TWENTY</span><span class="t-serif">seats.</span></h1>
+      <p class="cs-lead rv"><strong>Skedo</strong> is a marketplace for one-hour live workshops. Forty minutes of someone building in front of you, then twenty minutes where you can actually ask. We designed the product end to end, the learner side and the teacher side, around one promise and the trust it takes to keep it.</p>
+      <div class="cs-actions rv">
+        <a class="btn btn--accent" href="https://skedo-livid.vercel.app/" target="_blank" rel="noopener">See it live <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--line" href="#problem">Read the case study</a>
       </div>
     </div>
   </section>
@@ -568,7 +592,7 @@
             <div class="swv"><div class="swv__c" style="background:#20231E;"></div><div class="swv__b"><div class="swv__h">#20231E</div><div class="swv__n">Ink</div></div></div>
           </div>
           <div class="panel__k" style="margin-top:24px;">Signature component</div>
-          <div style="margin-top:16px;"><div class="seats seats--lg" data-taken="14" data-need="0"></div><div class="seatnote" style="margin-top:8px;">The seat meter, reused on cards, detail, bookings and the teacher dashboard.</div></div>
+          <div class="sk-demo" style="margin-top:16px;"><div class="seats seats--lg" data-taken="14" data-need="0"></div><div class="seatnote" style="margin-top:8px;">The seat meter, reused on cards, detail, bookings and the teacher dashboard.</div></div>
         </div>
         <div class="panel rv">
           <div class="panel__k">Type roles</div>
@@ -637,39 +661,49 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta2">
-    <div class="cw">
-      <h2 class="cta2__t rv">See the room<br/>for yourself.</h2>
-      <div class="cta2__row rv">
-        <a class="btnx btnx--green" href="https://skedo-livid.vercel.app/" target="_blank" rel="noopener">Open the live app <span aria-hidden="true">↗</span></a>
-        <a class="btnx btnx--ghost" href="#" data-book>Book a call</a>
+  <section class="section contact">
+    <div class="wrap contact__inner">
+      <h2 class="contact__title rv"><span class="t-black">SEE THE</span><span class="t-serif">room.</span></h2>
+      <div class="contact__body">
+        <p class="contact__lead rv">A live concept you can open and try. See how twenty seats changes the whole experience.</p>
+        <div class="contact__actions rv">
+          <a class="btn btn--accent" href="https://skedo-livid.vercel.app/" target="_blank" rel="noopener">Open the live app <span aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="#" data-book>Book a call</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="ft">
-    <div class="cw ft__in">
-      <a class="nv__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <nav class="ft__links">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#expertise">Services</a>
-        <a href="../index.html#contact">Contact</a>
-        <a href="https://skedo-livid.vercel.app/" target="_blank" rel="noopener">Live site ↗</a>
-      </nav>
-      <span class="ft__c">© 2025 BoxnDots. Case study.</span>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="footer__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" aria-hidden="true"><use href="#logo"></use></svg></a>
+          <p>Creative &amp; branding studio. We build brands people remember.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div class="footer__col"><span class="eyebrow">STUDIO</span><a href="../index.html#work">Work</a><a href="../index.html#expertise">Services</a><a href="../index.html#contact">Contact</a></div>
+          <div class="footer__col"><span class="eyebrow">SOCIAL</span><a href="https://www.instagram.com/boxndots/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/boxndots/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/aarchana" target="_blank" rel="noopener">Behance</a></div>
+        </nav>
+      </div>
+      <div class="footer__bottom"><span>© 2026 BoxnDots. All rights reserved.</span><span>Made with care in Chennai.</span></div>
     </div>
   </footer>
 
   <!-- BOOK A CALL MODAL -->
-  <div class="cmodal" id="bookModal" hidden>
-    <div data-close style="position:absolute; inset:0; background:rgba(25,30,22,.6); backdrop-filter:blur(4px);"></div>
-    <div role="dialog" aria-modal="true" aria-label="Book a call" style="position:relative; width:100%; max-width:760px; background:#fff; border:1px solid var(--sk-line); border-radius:18px; overflow:hidden; box-shadow:0 40px 90px -30px rgba(25,30,22,.5);">
-      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:24px 24px 16px;">
-        <div><div class="serif" style="font-size:28px;">Book a call</div><div style="font-size:14px; color:var(--sk-mut); margin-top:6px;">Pick a time that suits you. We will meet over Google Meet.</div></div>
-        <button type="button" data-close aria-label="Close" style="flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--sk-line); background:none; color:var(--sk-ink); font-size:20px; line-height:1; cursor:pointer;">&times;</button>
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Book a call" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <span class="eyebrow">LET&rsquo;S TALK</span>
+        <h2 class="modal__title"><span class="t-black">BOOK A</span><span class="t-serif">call.</span></h2>
+        <p class="modal__sub">Pick a time that suits you. You&rsquo;ll get a Google Meet link by email.</p>
       </div>
-      <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy" style="width:100%; height:560px; max-height:70vh; border:0; background:#fff;"></iframe>
+      <div class="modal__embed">
+        <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 
@@ -697,12 +731,21 @@
     window.addEventListener('load', fit);
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
     fit(); setTimeout(fit, 300);
-    /* reveal */
-    var items=[].slice.call(document.querySelectorAll('.rv, .rvf'));
+    /* mobile menu */
+    var burger=document.querySelector('.nav__burger'), menu=document.getElementById('mobileMenu');
+    if(burger&&menu){var mc=menu.querySelector('.menu__close');
+      var mo=function(){menu.hidden=false;burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';};
+      var ms=function(){menu.hidden=true;burger.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+      burger.addEventListener('click',mo); if(mc)mc.addEventListener('click',ms);
+      menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',ms);});
+    }
+    /* reveal (Skedo .rv/.rvf + BoxnDots system reveal elements) */
+    var items=[].slice.call(document.querySelectorAll('.rv, .rvf, .sec-title, .contact__title, .contact__lead, .contact__actions'));
     var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!('IntersectionObserver' in window) || reduce){ items.forEach(function(el){ el.classList.add('in'); }); }
+    function show(el){ el.classList.add('in'); el.classList.add('is-visible'); }
+    if(!('IntersectionObserver' in window) || reduce){ items.forEach(show); }
     else{
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold:0.08, rootMargin:'0px 0px -5% 0px' });
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, { threshold:0.08, rootMargin:'0px 0px -5% 0px' });
       items.forEach(function(el){ io.observe(el); });
     }
     /* book a call modal */
