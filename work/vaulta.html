@@ -12,7 +12,6 @@
   <meta property="og:site_name" content="BoxnDots" />
   <meta property="og:title" content="VAULTA Architecture · Brand Identity" />
   <meta property="og:description" content="A complete brand identity for VAULTA Architecture, a modern architecture studio. A cityscape monogram, a black and amber system, and a full suite of applications." />
-  <meta property="og:url" content="https://boxndots-website.vercel.app/work/vaulta.html" />
   <meta property="og:image" content="https://boxndots-website.vercel.app/assets/images/work/vaulta/cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://boxndots-website.vercel.app/assets/images/work/vaulta/cover.jpg" />
@@ -20,150 +19,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;900&family=Fraunces:opsz,wght@9..144,300&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
-  <style>
-  /* ===== VAULTA case study - dark, black + amber ===== */
-  :root{
-    --vk:#F4A70F;          /* amber */
-    --vk-bg:#07070a;       /* page black */
-    --vk-panel:#101014;    /* raised panel */
-    --vk-line:#23232a;     /* hairlines */
-    --vk-ink:#f2f2f4;      /* primary text */
-    --vk-mut:#9a9aa3;      /* muted text */
-    --vk-grey:#515151;
-  }
-  body.case{ background:var(--vk-bg); color:var(--vk-ink); }
-  .case a{ color:inherit; }
-  .case-wrap{ width:100%; max-width:1200px; margin-inline:auto; padding-inline:24px; }
-  @media (min-width:768px){ .case-wrap{ padding-inline:48px; } }
-  @media (min-width:1024px){ .case-wrap{ padding-inline:64px; } }
-  @media (min-width:1440px){ .case-wrap{ max-width:1280px; padding-inline:72px; } }
-
-  .kick{ font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--vk); }
-  .kick--mut{ color:var(--vk-mut); }
-
-  /* nav */
-  .cnav{ position:sticky; top:0; z-index:30; background:rgba(7,7,10,.78); backdrop-filter:blur(10px); border-bottom:1px solid var(--vk-line); }
-  .cnav__in{ display:flex; align-items:center; justify-content:space-between; height:66px; }
-  .cnav__logo{ color:var(--vk-ink); display:inline-flex; }
-  .cnav__logo .logo{ height:30px; width:auto; color:var(--vk-ink); }
-  .cnav__right{ display:flex; align-items:center; gap:10px; }
-  .cnav__back{ font-size:14px; color:var(--vk-mut); transition:color .2s; }
-  .cnav__back:hover{ color:var(--vk-ink); }
-  .cnav__cta{ display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 18px; border-radius:999px; background:var(--vk); color:#101014; font-weight:500; font-size:14px; transition:transform .25s, box-shadow .25s; }
-  .cnav__cta:hover{ transform:translateY(-1px); box-shadow:0 8px 24px rgba(244,167,15,.28); }
-  @media (max-width:560px){ .cnav__back{ display:none; } }
-
-  /* hero */
-  .chero{ position:relative; overflow:hidden; padding:72px 0 64px; border-bottom:1px solid var(--vk-line);
-    background:
-      radial-gradient(120% 90% at 85% 0%, rgba(244,167,15,.12), transparent 55%),
-      linear-gradient(180deg, #0b0b0f 0%, var(--vk-bg) 100%); }
-  .chero__grid{ position:absolute; inset:0; opacity:.5; pointer-events:none;
-    background-image:linear-gradient(var(--vk-line) 1px, transparent 1px), linear-gradient(90deg, var(--vk-line) 1px, transparent 1px);
-    background-size:64px 64px; -webkit-mask-image:radial-gradient(90% 70% at 70% 10%, #000, transparent 75%); mask-image:radial-gradient(90% 70% at 70% 10%, #000, transparent 75%); }
-  .chero__in{ position:relative; }
-  .chero__mark{ height:66px; width:auto; margin-bottom:28px; }
-  .chero__title{ font-family:var(--f-serif); font-weight:300; line-height:.92; letter-spacing:-.01em; font-size:clamp(64px,16vw,164px); margin:.08em 0 0; }
-  .chero__sub{ font-family:var(--f-sans); font-weight:200; font-size:clamp(20px,4.4vw,34px); line-height:1.25; max-width:18ch; margin:.5em 0 0; color:var(--vk-ink); }
-  .chero__lead{ font-size:clamp(15px,2.4vw,18px); line-height:1.6; color:var(--vk-mut); max-width:52ch; margin:28px 0 0; }
-  .chero__kicks{ display:flex; gap:14px; align-items:center; margin-bottom:22px; }
-  .chero__dot{ width:5px; height:5px; border-radius:50%; background:var(--vk); }
-
-  /* meta bar */
-  .meta{ border-bottom:1px solid var(--vk-line); }
-  .meta__grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px 20px; padding:40px 0; }
-  @media (min-width:768px){ .meta__grid{ grid-template-columns:repeat(4,1fr); } }
-  .meta__k{ font-family:var(--f-mono); font-weight:500; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--vk-mut); }
-  .meta__v{ font-size:15px; line-height:1.5; margin-top:10px; color:var(--vk-ink); }
-
-  /* generic section */
-  .sec{ padding:72px 0; border-bottom:1px solid var(--vk-line); }
-  @media (min-width:1024px){ .sec{ padding:100px 0; } }
-  .sec__head{ max-width:62ch; }
-  .sec__t{ font-family:var(--f-serif); font-weight:300; line-height:1; font-size:clamp(32px,6vw,56px); margin:16px 0 0; letter-spacing:-.01em; }
-  .sec__p{ font-size:clamp(15px,2.4vw,17px); line-height:1.7; color:var(--vk-mut); margin:20px 0 0; }
-  .sec__p strong{ color:var(--vk-ink); font-weight:500; }
-  .sec__p + .sec__p{ margin-top:14px; }
-
-  /* split rows (text + image) */
-  .split{ display:grid; gap:34px; align-items:center; margin-top:48px; }
-  @media (min-width:900px){ .split{ grid-template-columns:1fr 1.15fr; gap:56px; } .split--rev .split__media{ order:-1; } }
-  .split__k{ font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--vk); }
-  .split__t{ font-family:var(--f-serif); font-weight:300; font-size:clamp(26px,4.6vw,38px); line-height:1.05; margin:14px 0 0; }
-  .split__p{ font-size:15px; line-height:1.7; color:var(--vk-mut); margin:18px 0 0; }
-
-  .frame{ border-radius:16px; overflow:hidden; border:1px solid var(--vk-line); background:var(--vk-panel); box-shadow:0 30px 60px -30px rgba(0,0,0,.8); }
-  .frame img{ display:block; width:100%; height:auto; }
-  .frame--pad{ padding:0; }
-
-  /* color palette */
-  .swatches{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:48px; }
-  @media (min-width:768px){ .swatches{ grid-template-columns:repeat(4,1fr); gap:20px; } }
-  .sw{ border-radius:14px; border:1px solid var(--vk-line); overflow:hidden; background:var(--vk-panel); }
-  .sw__chip{ height:140px; }
-  .sw__body{ padding:16px 16px 18px; }
-  .sw__hex{ font-family:var(--f-mono); font-weight:500; font-size:13px; letter-spacing:.06em; }
-  .sw__name{ font-size:12px; color:var(--vk-mut); margin-top:6px; }
-
-  /* applications gallery */
-  .gal{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:48px; }
-  @media (min-width:700px){ .gal{ grid-template-columns:repeat(2,1fr); } }
-  .gal__item{ border-radius:16px; overflow:hidden; border:1px solid var(--vk-line); background:var(--vk-panel); position:relative; }
-  .gal__item img{ display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:4/3; }
-  .gal__item--dark{ background:#0c0c10; }
-  .gal__item--dark img{ object-fit:contain; padding:18px; }
-  .gal__item--wide{ grid-column:1 / -1; }
-  @media (min-width:700px){ .gal__item--wide img{ aspect-ratio:16/7; } }
-  .gal__cap{ position:absolute; left:16px; bottom:14px; font-family:var(--f-mono); font-weight:500; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--vk-ink); background:rgba(7,7,10,.6); backdrop-filter:blur(6px); padding:6px 10px; border-radius:999px; }
-
-  /* outcome stats */
-  .stats{ display:grid; grid-template-columns:1fr; gap:28px; margin-top:48px; }
-  @media (min-width:768px){ .stats{ grid-template-columns:repeat(3,1fr); } }
-  .stat__n{ font-family:var(--f-serif); font-weight:300; font-size:clamp(44px,8vw,64px); line-height:1; color:var(--vk); }
-  .stat__l{ font-size:14px; color:var(--vk-mut); margin-top:12px; line-height:1.5; }
-
-  /* cta */
-  .cta{ padding:96px 0; text-align:center;
-    background:radial-gradient(90% 120% at 50% 0%, rgba(244,167,15,.12), transparent 60%); }
-  .cta__t{ font-family:var(--f-serif); font-weight:300; font-size:clamp(38px,8vw,76px); line-height:.98; letter-spacing:-.01em; }
-  .cta__row{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:34px; }
-  .btnx{ display:inline-flex; align-items:center; gap:10px; height:52px; padding:0 26px; border-radius:999px; font-weight:500; font-size:15px; transition:transform .25s, box-shadow .25s, background .25s; }
-  .btnx--amber{ background:var(--vk); color:#101014; }
-  .btnx--amber:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(244,167,15,.3); }
-  .btnx--ghost{ border:1px solid var(--vk-line); color:var(--vk-ink); }
-  .btnx--ghost:hover{ transform:translateY(-2px); border-color:var(--vk); color:var(--vk); }
-
-  /* footer */
-  .cfoot{ border-top:1px solid var(--vk-line); padding:40px 0; }
-  .cfoot__in{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
-  .cfoot__links{ display:flex; gap:22px; flex-wrap:wrap; }
-  .cfoot__links a{ font-size:14px; color:var(--vk-mut); transition:color .2s; }
-  .cfoot__links a:hover{ color:var(--vk-ink); }
-  .cfoot__copy{ font-size:13px; color:var(--vk-mut); }
-
-  /* reveal */
-  .rv{ opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-  .rv.in{ opacity:1; transform:none; }
-  html:not(.js) .rv{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion:reduce){ .rv{ opacity:1; transform:none; transition:none; } }
-
-  /* book-a-call modal (dark) */
-  .cmodal[hidden]{ display:none; }
-  .cmodal{ position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; padding:20px; }
-  .cmodal__ov{ position:absolute; inset:0; background:rgba(3,3,6,.72); backdrop-filter:blur(4px); }
-  .cmodal__box{ position:relative; width:100%; max-width:760px; background:var(--vk-panel); border:1px solid var(--vk-line); border-radius:18px; overflow:hidden; box-shadow:0 40px 90px -30px rgba(0,0,0,.85); }
-  .cmodal__head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:24px 24px 16px; }
-  .cmodal__title{ font-family:var(--f-serif); font-weight:300; font-size:30px; line-height:1; }
-  .cmodal__sub{ font-size:14px; color:var(--vk-mut); margin-top:8px; }
-  .cmodal__x{ flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--vk-line); background:none; color:var(--vk-ink); font-size:20px; line-height:1; cursor:pointer; }
-  .cmodal__x:hover{ border-color:var(--vk); color:var(--vk); }
-  .cmodal__frame{ width:100%; height:560px; max-height:70vh; border:0; background:#fff; }
-  </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="case">
-
-  <!-- shared logo sprite -->
+<body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="logo" viewBox="0 0 88 64">
       <path d="M33.8837 8.63479H0V37.3754H33.8837V8.63479Z" fill="currentColor"/>
@@ -175,225 +33,247 @@
   </svg>
 
   <!-- NAV -->
-  <header class="cnav">
-    <div class="case-wrap cnav__in">
-      <a class="cnav__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <div class="cnav__right">
-        <a class="cnav__back" href="../index.html#work">&larr; All work</a>
-        <a class="cnav__cta" href="#" data-book>Book a call</a>
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
+      <div class="nav__right">
+        <nav class="nav__links" aria-label="Primary">
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#expertise">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+        <a class="btn btn--sm nav__cta" href="#" data-book>Book a call</a>
       </div>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
     </div>
   </header>
+  <div class="menu" id="mobileMenu" hidden>
+    <button class="menu__close" aria-label="Close menu">&times;</button>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#expertise">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="btn menu__cta" href="#" data-book>Book a call</a>
+  </div>
 
-  <!-- HERO -->
-  <section class="chero">
-    <div class="chero__grid"></div>
-    <div class="case-wrap chero__in">
-      <div class="chero__kicks rv">
-        <span class="kick">Brand Identity</span>
-        <span class="chero__dot"></span>
-        <span class="kick kick--mut">Architecture · 2025</span>
-      </div>
-      <img class="chero__mark rv" src="../assets/images/work/vaulta/logo-gold.png" alt="VAULTA Architecture logo" />
-      <h1 class="chero__title rv">VAULTA</h1>
-      <p class="chero__sub rv">Building a brand with the same precision as a building.</p>
-      <p class="chero__lead rv">A complete visual identity for a modern architecture studio. We turned the name into a cityscape, set it in a confident black and amber system, and carried it across every touchpoint, from the business card to the hard hat.</p>
-    </div>
-  </section>
-
-  <!-- META -->
-  <section class="meta">
-    <div class="case-wrap meta__grid">
-      <div class="rv"><div class="meta__k">Client</div><div class="meta__v">VAULTA Architecture</div></div>
-      <div class="rv"><div class="meta__k">Year</div><div class="meta__v">2025</div></div>
-      <div class="rv"><div class="meta__k">Services</div><div class="meta__v">Brand strategy, Logo design, Identity system, Collateral</div></div>
-      <div class="rv"><div class="meta__k">Deliverables</div><div class="meta__v">Logo suite, Brand guidelines, Stationery, Apparel, Signage</div></div>
-    </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="sec__head rv">
-        <span class="kick">The brief</span>
-        <h2 class="sec__t">A studio that designs space, in need of a brand that holds it.</h2>
-        <p class="sec__p"><strong>Who is VAULTA?</strong> A modern architecture firm focused on innovative, sustainable and aesthetic design. They create functional spaces that blend creativity with precision, and they wanted an identity that felt exactly that way: modern, sophisticated and unmistakably architectural.</p>
-        <p class="sec__p">The challenge was to make the name do the work. VAULTA had to read as a studio of substance at a glance, stay minimal enough to live on a tiny favicon, and still feel premium blown up across a building site. One mark, many surfaces, zero compromise.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FULL-BLEED WIREFRAME -->
-  <section class="sec" style="padding-top:0;">
-    <div class="case-wrap">
-      <div class="frame rv"><img src="../assets/images/work/vaulta/hero.jpg" alt="VAULTA architectural wireframe with logo" loading="lazy" /></div>
-    </div>
-  </section>
-
-  <!-- LOGO CONCEPT -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="sec__head rv">
-        <span class="kick">The idea</span>
-        <h2 class="sec__t">The name, drawn as a skyline.</h2>
-      </div>
-      <div class="split">
-        <div class="rv">
-          <span class="split__k">Monogram</span>
-          <h3 class="split__t">A vault that doubles as a cityscape.</h3>
-          <p class="split__p">We started by pulling apart the letterforms in "Vaulta" and rebuilding them as structure. The vertical and angular shapes inside the curve read as buildings, a small skyline, while the curve itself nods to a vault, one of the strongest forms in architecture. Minimal, geometric and instantly connected to the industry.</p>
-          <p class="split__p">The result works as a full lockup, a standalone symbol, and a single mark small enough for an app icon, without ever losing its meaning.</p>
+  <main>
+    <!-- HERO -->
+    <section class="section hero bg-off">
+      <div class="wrap">
+        <a class="nav__back cs-reveal" href="../index.html#work">&larr; All work</a>
+        <div class="cs-kick cs-reveal" style="margin-top:16px;"><span class="eyebrow">Brand Identity</span><span class="dot"></span><span class="eyebrow" style="color:var(--mut);">Architecture · 2025</span></div>
+        <h1 class="cs-hero__title sec-title cs-reveal"><span class="t-black">VAULTA</span><span class="t-serif">architecture.</span></h1>
+        <p class="cs-lead cs-reveal">A complete identity for <strong>VAULTA</strong>, a modern architecture studio. A cityscape monogram, a confident black and amber system, and a full suite of real world applications, from the logo to the hard hat.</p>
+        <div class="cs-actions cs-reveal">
+          <a class="btn btn--accent" href="#" data-book>Book a call <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--line" href="mailto:hello@boxndots.com">Start a project</a>
         </div>
-        <div class="split__media rv"><div class="frame"><img src="../assets/images/work/vaulta/logo-concept.jpg" alt="VAULTA logo concept and construction grid" loading="lazy" /></div></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRIMARY SYMBOL + LOCKUPS -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="split split--rev">
-        <div class="rv">
-          <span class="split__k">The system</span>
-          <h3 class="split__t">One symbol, built to flex.</h3>
-          <p class="split__p">The VAULTA symbol is the core of the brand. It ships in full colour, greyscale and standalone formats, with dedicated versions tuned for dark and light backgrounds so it always sits crisp on whatever it lands on.</p>
-          <p class="split__p">Horizontal and vertical lockups give the team a confident option for every ratio, from a wide website header to a square social avatar.</p>
+    <!-- WIREFRAME -->
+    <section class="section bg-off" style="padding-top:0;">
+      <div class="wrap"><div class="cs-frame cs-fade"><img src="../assets/images/work/vaulta/hero.jpg" alt="VAULTA architectural wireframe with logo" loading="lazy" /></div></div>
+    </section>
+
+    <!-- META -->
+    <section class="cs-meta bg-off">
+      <div class="wrap cs-meta__g">
+        <div class="cs-reveal"><div class="cs-meta__k">Client</div><div class="cs-meta__v">VAULTA Architecture</div></div>
+        <div class="cs-reveal"><div class="cs-meta__k">Year</div><div class="cs-meta__v">2025</div></div>
+        <div class="cs-reveal"><div class="cs-meta__k">Services</div><div class="cs-meta__v">Brand strategy, Logo design, Identity system, Collateral</div></div>
+        <div class="cs-reveal"><div class="cs-meta__k">Deliverables</div><div class="cs-meta__v">Logo suite, Guidelines, Stationery, Apparel, Signage</div></div>
+      </div>
+    </section>
+
+    <!-- BRIEF -->
+    <section class="section bg-paper">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">The brief</span>
+          <h2 class="cs-ttl cs-reveal">A studio that designs space, in need of a brand that holds it.</h2>
+          <p class="cs-p cs-reveal"><strong>Who is VAULTA?</strong> A modern architecture firm focused on innovative, sustainable and aesthetic design. They create functional spaces that blend creativity with precision, and they wanted an identity that felt exactly that way: modern, sophisticated and unmistakably architectural.</p>
+          <p class="cs-p cs-reveal">The challenge was to make the name do the work. VAULTA had to read as a studio of substance at a glance, stay minimal enough to live on a tiny favicon, and still feel premium blown up across a building site. One mark, many surfaces, zero compromise.</p>
         </div>
-        <div class="split__media rv"><div class="frame"><img src="../assets/images/work/vaulta/symbol.jpg" alt="VAULTA primary symbol on dark" loading="lazy" /></div></div>
       </div>
-      <div class="frame rv" style="margin-top:34px;"><img src="../assets/images/work/vaulta/lockups.jpg" alt="VAULTA horizontal and vertical lockups" loading="lazy" /></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- COLOR -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="sec__head rv">
-        <span class="kick">The palette</span>
-        <h2 class="sec__t">Amber on black. Warm idea, serious frame.</h2>
-        <p class="sec__p">Amber carries innovation and warmth, the spark of a bright idea. Black grounds it in strength and professionalism, the premium weight the studio wanted. Grey keeps things neutral and modern, and white holds the whole system clean and open.</p>
-      </div>
-      <div class="swatches">
-        <div class="sw rv"><div class="sw__chip" style="background:#F4A70F"></div><div class="sw__body"><div class="sw__hex">#F4A70F</div><div class="sw__name">Amber · primary accent</div></div></div>
-        <div class="sw rv"><div class="sw__chip" style="background:#000000"></div><div class="sw__body"><div class="sw__hex">#000000</div><div class="sw__name">Black · foundation</div></div></div>
-        <div class="sw rv"><div class="sw__chip" style="background:#515151"></div><div class="sw__body"><div class="sw__hex">#515151</div><div class="sw__name">Grey · neutral balance</div></div></div>
-        <div class="sw rv"><div class="sw__chip" style="background:#FFFFFF"></div><div class="sw__body"><div class="sw__hex">#FFFFFF</div><div class="sw__name">White · clarity</div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TYPOGRAPHY -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="split">
-        <div class="rv">
-          <span class="split__k">Typography</span>
-          <h3 class="split__t">Thin, wide and quietly futuristic.</h3>
-          <p class="split__p">A clean geometric sans, set light with generous tracking, gives the wordmark a modern, almost architectural line. It feels engineered rather than decorated, and leaves plenty of room for the mark to breathe.</p>
-          <p class="split__p">The same type logic scales from the logo down to captions, keeping every layout calm, precise and unmistakably VAULTA.</p>
+    <!-- LOGO CONCEPT -->
+    <section class="section bg-off">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">The idea</span>
+          <h2 class="cs-ttl cs-reveal">The name, drawn as a skyline.</h2>
         </div>
-        <div class="split__media rv"><div class="frame"><img src="../assets/images/work/vaulta/type.jpg" alt="VAULTA typography specimen" loading="lazy" /></div></div>
+        <div class="cs-split">
+          <div class="cs-reveal">
+            <span class="eyebrow">Monogram</span>
+            <h3 class="cs-split__t">A vault that doubles as a cityscape.</h3>
+            <p class="cs-split__p">We pulled apart the letterforms in "Vaulta" and rebuilt them as structure. The vertical and angular shapes inside the curve read as buildings, a small skyline, while the curve itself nods to a vault, one of the strongest forms in architecture.</p>
+            <p class="cs-split__p">The result works as a full lockup, a standalone symbol, and a single mark small enough for an app icon, without ever losing its meaning.</p>
+          </div>
+          <div class="cs-split__media cs-fade"><div class="cs-frame"><img src="../assets/images/work/vaulta/logo-concept.jpg" alt="VAULTA logo concept and construction grid" loading="lazy" /></div></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- APPLICATIONS -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="sec__head rv">
-        <span class="kick">In the world</span>
-        <h2 class="sec__t">A system that shows up everywhere.</h2>
-        <p class="sec__p">The identity was rolled out across a full suite of applications so VAULTA looks like itself in every room, on paper, on people and on the site.</p>
+    <!-- SYMBOL + LOCKUPS -->
+    <section class="section bg-paper">
+      <div class="wrap">
+        <div class="cs-split split--rev cs-split--rev">
+          <div class="cs-reveal">
+            <span class="eyebrow">The system</span>
+            <h3 class="cs-split__t">One symbol, built to flex.</h3>
+            <p class="cs-split__p">The VAULTA symbol is the core of the brand. It ships in full colour, greyscale and standalone formats, with dedicated versions tuned for dark and light backgrounds so it always sits crisp on whatever it lands on.</p>
+            <p class="cs-split__p">Horizontal and vertical lockups give the team a confident option for every ratio, from a wide website header to a square social avatar.</p>
+          </div>
+          <div class="cs-split__media cs-fade"><div class="cs-frame"><img src="../assets/images/work/vaulta/symbol.jpg" alt="VAULTA primary symbol" loading="lazy" /></div></div>
+        </div>
+        <div class="cs-frame cs-fade" style="margin-top:30px;"><img src="../assets/images/work/vaulta/lockups.jpg" alt="VAULTA horizontal and vertical lockups" loading="lazy" /></div>
       </div>
-      <div class="gal">
-        <div class="gal__item rv"><img src="../assets/images/work/vaulta/card.jpg" alt="VAULTA business cards" loading="lazy" /><span class="gal__cap">Business cards</span></div>
-        <div class="gal__item rv"><img src="../assets/images/work/vaulta/letterhead.jpg" alt="VAULTA letterhead and stationery" loading="lazy" /><span class="gal__cap">Stationery</span></div>
-        <div class="gal__item gal__item--dark rv"><img src="../assets/images/work/vaulta/badge.png" alt="VAULTA staff ID badge" loading="lazy" /><span class="gal__cap">ID badge</span></div>
-        <div class="gal__item gal__item--dark rv"><img src="../assets/images/work/vaulta/notebook.png" alt="VAULTA branded notebook" loading="lazy" /><span class="gal__cap">Notebook</span></div>
-        <div class="gal__item rv"><img src="../assets/images/work/vaulta/polo.jpg" alt="VAULTA team apparel" loading="lazy" /><span class="gal__cap">Apparel</span></div>
-        <div class="gal__item rv"><img src="../assets/images/work/vaulta/backpack.jpg" alt="VAULTA branded backpack" loading="lazy" /><span class="gal__cap">Merch</span></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- OUTCOME -->
-  <section class="sec">
-    <div class="case-wrap">
-      <div class="sec__head rv">
-        <span class="kick">The outcome</span>
-        <h2 class="sec__t">A brand that builds trust before the first meeting.</h2>
+    <!-- COLOUR -->
+    <section class="section bg-off">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">The palette</span>
+          <h2 class="cs-ttl cs-reveal">Amber on black. Warm idea, serious frame.</h2>
+          <p class="cs-p cs-reveal">Amber carries innovation and warmth, the spark of a bright idea. Black grounds it in strength and professionalism. Grey keeps things neutral and modern, and white holds the whole system clean and open.</p>
+        </div>
+        <div class="cs-cards cs-cards--2" style="grid-template-columns:repeat(2,1fr);">
+          <div class="cs-card cs-reveal" style="padding:0; overflow:hidden;"><div style="height:120px; background:#F4A70F;"></div><div style="padding:16px 18px;"><div style="font-family:var(--f-mono); font-weight:500; font-size:13px;">#F4A70F</div><div style="font-size:12px; color:var(--body); margin-top:4px;">Amber · accent</div></div></div>
+          <div class="cs-card cs-reveal" style="padding:0; overflow:hidden;"><div style="height:120px; background:#000;"></div><div style="padding:16px 18px;"><div style="font-family:var(--f-mono); font-weight:500; font-size:13px;">#000000</div><div style="font-size:12px; color:var(--body); margin-top:4px;">Black · foundation</div></div></div>
+          <div class="cs-card cs-reveal" style="padding:0; overflow:hidden;"><div style="height:120px; background:#515151;"></div><div style="padding:16px 18px;"><div style="font-family:var(--f-mono); font-weight:500; font-size:13px;">#515151</div><div style="font-size:12px; color:var(--body); margin-top:4px;">Grey · neutral</div></div></div>
+          <div class="cs-card cs-reveal" style="padding:0; overflow:hidden;"><div style="height:120px; background:#fff; border-bottom:1px solid var(--line);"></div><div style="padding:16px 18px;"><div style="font-family:var(--f-mono); font-weight:500; font-size:13px;">#FFFFFF</div><div style="font-size:12px; color:var(--body); margin-top:4px;">White · clarity</div></div></div>
+        </div>
       </div>
-      <div class="stats">
-        <div class="rv"><div class="stat__n">1</div><div class="stat__l">Core symbol that works from favicon to facade</div></div>
-        <div class="rv"><div class="stat__n">4</div><div class="stat__l">Colour system, from amber accent to black foundation</div></div>
-        <div class="rv"><div class="stat__n">15+</div><div class="stat__l">Branded applications, from stationery to signage</div></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="case-wrap">
-      <h2 class="cta__t rv">Want a brand<br/>this considered?</h2>
-      <div class="cta__row rv">
-        <a class="btnx btnx--amber" href="#" data-book>Book a call</a>
-        <a class="btnx btnx--ghost" href="mailto:hello@boxndots.com">Start a project &rarr;</a>
+    <!-- TYPOGRAPHY -->
+    <section class="section bg-paper">
+      <div class="wrap">
+        <div class="cs-split">
+          <div class="cs-reveal">
+            <span class="eyebrow">Typography</span>
+            <h3 class="cs-split__t">Thin, wide and quietly futuristic.</h3>
+            <p class="cs-split__p">A clean geometric sans, set light with generous tracking, gives the wordmark a modern, almost architectural line. It feels engineered rather than decorated, and leaves plenty of room for the mark to breathe.</p>
+            <p class="cs-split__p">The same type logic scales from the logo down to captions, keeping every layout calm, precise and unmistakably VAULTA.</p>
+          </div>
+          <div class="cs-split__media cs-fade"><div class="cs-frame"><img src="../assets/images/work/vaulta/type.jpg" alt="VAULTA typography specimen" loading="lazy" /></div></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- APPLICATIONS -->
+    <section class="section bg-off">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">In the world</span>
+          <h2 class="cs-ttl cs-reveal">A system that shows up everywhere.</h2>
+          <p class="cs-p cs-reveal">The identity was rolled out across a full suite of applications so VAULTA looks like itself in every room, on paper, on people and on the site.</p>
+        </div>
+        <div class="cs-gallery">
+          <div class="cs-gitem cs-fade"><img src="../assets/images/work/vaulta/card.jpg" alt="VAULTA business cards" loading="lazy" /><span class="cs-gcap">Business cards</span></div>
+          <div class="cs-gitem cs-fade"><img src="../assets/images/work/vaulta/letterhead.jpg" alt="VAULTA stationery" loading="lazy" /><span class="cs-gcap">Stationery</span></div>
+          <div class="cs-gitem cs-gitem--dark cs-fade"><img src="../assets/images/work/vaulta/badge.png" alt="VAULTA ID badge" loading="lazy" /><span class="cs-gcap">ID badge</span></div>
+          <div class="cs-gitem cs-gitem--dark cs-fade"><img src="../assets/images/work/vaulta/notebook.png" alt="VAULTA notebook" loading="lazy" /><span class="cs-gcap">Notebook</span></div>
+          <div class="cs-gitem cs-fade"><img src="../assets/images/work/vaulta/polo.jpg" alt="VAULTA apparel" loading="lazy" /><span class="cs-gcap">Apparel</span></div>
+          <div class="cs-gitem cs-fade"><img src="../assets/images/work/vaulta/backpack.jpg" alt="VAULTA merch" loading="lazy" /><span class="cs-gcap">Merch</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="section bg-paper">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow cs-reveal">The outcome</span>
+          <h2 class="cs-ttl cs-reveal">A brand that builds trust before the first meeting.</h2>
+        </div>
+        <div class="cs-stats" style="grid-template-columns:repeat(3,1fr);">
+          <div class="cs-reveal"><div class="cs-stat__n">1</div><div class="cs-stat__l">Core symbol that works from favicon to facade</div></div>
+          <div class="cs-reveal"><div class="cs-stat__n">4</div><div class="cs-stat__l">Colour system, from amber accent to black foundation</div></div>
+          <div class="cs-reveal"><div class="cs-stat__n">15<span>+</span></div><div class="cs-stat__l">Branded applications, from stationery to signage</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section contact">
+      <div class="wrap contact__inner">
+        <h2 class="contact__title cs-reveal"><span class="t-black">WANT A</span><span class="t-serif">brand like this?</span></h2>
+        <div class="contact__body">
+          <p class="contact__lead cs-reveal">Tell us what you&rsquo;re building. We&rsquo;ll tell you how we&rsquo;d make it unforgettable.</p>
+          <div class="contact__actions cs-reveal">
+            <a class="btn btn--accent" href="#" data-book>Book a call <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost" href="mailto:hello@boxndots.com">Start a project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer class="cfoot">
-    <div class="case-wrap cfoot__in">
-      <a class="cnav__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" role="img" aria-hidden="true"><use href="#logo"></use></svg></a>
-      <nav class="cfoot__links">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#expertise">Services</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <span class="cfoot__copy">© 2025 BoxnDots. Case study.</span>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="footer__logo" href="../index.html#top" aria-label="BoxnDots home"><svg class="logo" viewBox="0 0 88 64" aria-hidden="true"><use href="#logo"></use></svg></a>
+          <p>Creative &amp; branding studio. We build brands people remember.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div class="footer__col"><span class="eyebrow">STUDIO</span><a href="../index.html#work">Work</a><a href="../index.html#expertise">Services</a><a href="../index.html#contact">Contact</a></div>
+          <div class="footer__col"><span class="eyebrow">SOCIAL</span><a href="https://www.instagram.com/boxndots/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/boxndots/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/aarchana" target="_blank" rel="noopener">Behance</a></div>
+        </nav>
+      </div>
+      <div class="footer__bottom"><span>© 2026 BoxnDots. All rights reserved.</span><span>Made with care in Chennai.</span></div>
     </div>
   </footer>
 
   <!-- BOOK A CALL MODAL -->
-  <div class="cmodal" id="bookModal" hidden>
-    <div class="cmodal__ov" data-close></div>
-    <div class="cmodal__box" role="dialog" aria-modal="true" aria-label="Book a call">
-      <div class="cmodal__head">
-        <div>
-          <div class="cmodal__title">Book a call</div>
-          <div class="cmodal__sub">Pick a time that suits you. We will meet over Google Meet.</div>
-        </div>
-        <button class="cmodal__x" type="button" data-close aria-label="Close">&times;</button>
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Book a call" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <span class="eyebrow">LET&rsquo;S TALK</span>
+        <h2 class="modal__title"><span class="t-black">BOOK A</span><span class="t-serif">call.</span></h2>
+        <p class="modal__sub">Pick a time that suits you. You&rsquo;ll get a Google Meet link by email.</p>
       </div>
-      <iframe class="cmodal__frame" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      <div class="modal__embed">
+        <iframe data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0qv-35Dg9TYsrfzVzT2fFEPiq8yvXPV2QkLSlMvT9ZHN-_0gvdvVP60bLjVG95rNg8AGc7YpNL?gv=true" title="Schedule a call with BoxnDots" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 
   <script>
   (function(){
     'use strict';
-    /* reveal on scroll */
-    var items = Array.prototype.slice.call(document.querySelectorAll('.rv'));
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!('IntersectionObserver' in window) || reduce){ items.forEach(function(el){ el.classList.add('in'); }); }
-    else {
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold:0.12, rootMargin:'0px 0px -6% 0px' });
-      items.forEach(function(el){ io.observe(el); });
+    /* mobile menu */
+    var burger=document.querySelector('.nav__burger'), menu=document.getElementById('mobileMenu');
+    if(burger&&menu){var close=menu.querySelector('.menu__close');
+      var open=function(){menu.hidden=false;burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';};
+      var shut=function(){menu.hidden=true;burger.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+      burger.addEventListener('click',open); if(close)close.addEventListener('click',shut);
+      menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',shut);});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!menu.hidden)shut();});
     }
-    /* book a call modal */
-    var modal = document.getElementById('bookModal');
-    var openers = document.querySelectorAll('[data-book]');
-    if (modal && openers.length){
-      var frame = modal.querySelector('iframe');
-      var open = function(e){ if(e) e.preventDefault(); if(frame && !frame.src && frame.getAttribute('data-src')) frame.src = frame.getAttribute('data-src'); modal.hidden = false; document.body.style.overflow='hidden'; };
-      var close = function(){ modal.hidden = true; document.body.style.overflow=''; };
-      openers.forEach(function(b){ b.addEventListener('click', open); });
-      modal.querySelectorAll('[data-close]').forEach(function(c){ c.addEventListener('click', close); });
-      document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !modal.hidden) close(); });
+    /* book modal */
+    var modal=document.getElementById('bookModal');
+    if(modal){var frame=modal.querySelector('iframe');
+      var open=function(e){if(e)e.preventDefault();if(frame&&!frame.src&&frame.getAttribute('data-src'))frame.src=frame.getAttribute('data-src');modal.hidden=false;document.body.style.overflow='hidden';};
+      var shut=function(){modal.hidden=true;document.body.style.overflow='';};
+      document.querySelectorAll('[data-book]').forEach(function(b){b.addEventListener('click',open);});
+      modal.querySelectorAll('[data-close]').forEach(function(c){c.addEventListener('click',shut);});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)shut();});
     }
+    /* reveal */
+    var items=[].slice.call(document.querySelectorAll('.cs-reveal,.cs-fade'));
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!('IntersectionObserver' in window)||reduce){items.forEach(function(el){el.classList.add('is-visible');});}
+    else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -6% 0px'});items.forEach(function(el){io.observe(el);});}
   })();
   </script>
 </body>
