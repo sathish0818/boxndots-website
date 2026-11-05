@@ -55,8 +55,8 @@ button{ font:inherit; cursor:pointer; }
 /* ---- layout ---- */
 .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad); }
 .section{ padding-block:var(--sec-pad); }
-.hero,.expertise,.team{ background:var(--off); }
-.work,.testimonials{ background:var(--paper); }
+.hero,.expertise,.team,.testimonials{ background:var(--off); }
+.work{ background:var(--paper); }
 
 /* shared type bits */
 .eyebrow{ font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.32em; color:var(--label); text-transform:uppercase; }
@@ -233,7 +233,7 @@ button{ font:inherit; cursor:pointer; }
 .testi__card{
   flex:0 0 100%; scroll-snap-align:center;
   display:flex; flex-direction:column; gap:12px;
-  background:var(--off); border-radius:16px; padding:26px 24px;
+  background:var(--paper); border-radius:16px; padding:26px 24px;
 }
 .testi__mark{ font-family:var(--f-serif); font-weight:300; font-size:48px; line-height:.4; color:var(--accent); }
 .testi__card blockquote{ font-size:17px; line-height:1.52; }
