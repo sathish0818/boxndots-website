@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BoxnDots — Creative & Branding Studio
+   BoxnDots - Creative & Branding Studio
    Mobile-first, responsive across 5 breakpoints: 375 / 768 / 1024 / 1440 / 1920
    ========================================================================== */
 
@@ -347,7 +347,7 @@ a.proj__thumb{ cursor:pointer; }
 }
 
 /* ==========================================================================
-   INTERACTIONS — subtle micro-animations
+   INTERACTIONS - subtle micro-animations
    ========================================================================== */
 /* animated nav underline */
 .nav__links a{ position:relative; }

@@ -1,4 +1,4 @@
-/* BoxnDots — interactions: mobile menu + testimonials carousel */
+/* BoxnDots - interactions: mobile menu + testimonials carousel */
 (function () {
   'use strict';
 
