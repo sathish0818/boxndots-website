@@ -95,7 +95,7 @@
   var reveal = Array.prototype.slice.call(document.querySelectorAll(SEL));
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!('IntersectionObserver' in window) || reduce) {
+  if (reduce) {
     reveal.forEach(function (el) { el.classList.add('is-visible'); });
   } else {
     // stagger items inside a group (services, team, testimonials, projects)
@@ -108,12 +108,38 @@
         if (i > 0) el.style.transitionDelay = Math.min(i, 8) * 55 + 'ms';
       }
     });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-    reveal.forEach(function (el) { io.observe(el); });
+    // Robust reveal: three independent layers so content can never stay
+    // hidden (which would read as big blank gaps). 1) IntersectionObserver
+    // for the staggered fade-in, 2) a scroll/resize sweep as backup, and
+    // 3) a guaranteed safety timeout that reveals anything still hidden.
+    var pending = reveal.slice();
+    function show(el) {
+      el.classList.add('is-visible');
+      var k = pending.indexOf(el);
+      if (k > -1) pending.splice(k, 1);
+    }
+    function sweep() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = pending.length - 1; i >= 0; i--) {
+        if (pending[i].getBoundingClientRect().top < vh * 0.92) show(pending[i]);
+      }
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+      reveal.forEach(function (el) { io.observe(el); });
+    }
+    var ticking = false;
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(function () { sweep(); ticking = false; }); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', sweep);
+    sweep();
+    // Safety net: whatever the observer or scroll missed, reveal it.
+    setTimeout(function () { reveal.forEach(function (el) { el.classList.add('is-visible'); }); }, 2000);
   }
 
 })();

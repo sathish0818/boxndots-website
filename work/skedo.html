@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.css?v=3" />
   <style>
   /* ===== Skedo case study - PAGE CHROME uses the BoxnDots system ===== */
   :root{
@@ -209,10 +209,11 @@
   .ft__links a{ font-size:14px; color:var(--sk-mut); } .ft__links a:hover{ color:var(--sk-ink); }
   .ft__c{ font-size:13px; color:var(--sk-mut); }
 
-  /* reveal */
-  .rv{ opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  /* reveal (bndRevealSafety keyframe defined in style.css forces visibility
+     after 2.4s even if the reveal JS never runs, so content is never stuck) */
+  .rv{ opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); animation:bndRevealSafety .01s linear 2.4s forwards; }
   .rv.in{ opacity:1; transform:none; }
-  .rvf{ opacity:0; transition:opacity .8s ease; } .rvf.in{ opacity:1; }
+  .rvf{ opacity:0; transition:opacity .8s ease; animation:bndRevealSafety .01s linear 2.4s forwards; } .rvf.in{ opacity:1; }
 
   /* modal */
   #bookModal{ position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; padding:20px; }
@@ -743,10 +744,15 @@
     var items=[].slice.call(document.querySelectorAll('.rv, .rvf, .sec-title, .contact__title, .contact__lead, .contact__actions'));
     var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function show(el){ el.classList.add('in'); el.classList.add('is-visible'); }
-    if(!('IntersectionObserver' in window) || reduce){ items.forEach(show); }
+    if(reduce){ items.forEach(show); }
     else{
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, { threshold:0.08, rootMargin:'0px 0px -5% 0px' });
-      items.forEach(function(el){ io.observe(el); });
+      var pending=items.slice();
+      function reveal(el){ show(el); var k=pending.indexOf(el); if(k>-1)pending.splice(k,1); }
+      function sweep(){ var vh=window.innerHeight||document.documentElement.clientHeight; for(var i=pending.length-1;i>=0;i--){ if(pending[i].getBoundingClientRect().top<vh*0.92) reveal(pending[i]); } }
+      if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } }); }, { threshold:0, rootMargin:'0px 0px -8% 0px' }); items.forEach(function(el){ io.observe(el); }); }
+      var ticking=false; function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ sweep(); ticking=false; }); } }
+      window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll); window.addEventListener('load',sweep); sweep();
+      setTimeout(function(){ items.forEach(show); }, 2000);
     }
     /* book a call modal */
     var modal=document.getElementById('bookModal');

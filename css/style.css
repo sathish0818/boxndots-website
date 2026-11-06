@@ -380,15 +380,22 @@ a.proj__thumb{ cursor:pointer; }
 }
 
 /* scroll reveal */
+/* Safety net: pure-CSS reveal that forces content visible after a short
+   delay even if the reveal JS never runs (no observer, slow/broken script,
+   odd browser). This guarantees content can never stay hidden and read as
+   blank gaps. Normal case: the JS adds .is-visible first, so this is unused. */
+@keyframes bndRevealSafety{ to{ opacity:1; } }
 /* big headlines: clear slide-up + rise (they have no hover, so transform is safe) */
 .js :is(.hero__title,.sec-title,.contact__title){
   opacity:0; transform:translateY(46px);
   transition:opacity .8s ease, transform 1s cubic-bezier(.2,.8,.2,1);
+  animation:bndRevealSafety .01s linear 2.4s forwards;
 }
 .js :is(.hero__title,.sec-title,.contact__title).is-visible{ opacity:1; transform:none; }
 /* everything else: gentle fade (keeps hover transforms intact) */
 .js :is(.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__lead,.hero__note,.contact__lead,.contact__email,.contact__actions,.member){
   opacity:0; transition:opacity .8s ease;
+  animation:bndRevealSafety .01s linear 2.4s forwards;
 }
 .js :is(.sec-intro,.team__kicker,.svc,.proj,.testi__card,.hero__lead,.hero__note,.contact__lead,.contact__email,.contact__actions,.member).is-visible{ opacity:1; }
 
@@ -517,6 +524,6 @@ a.proj__thumb{ cursor:pointer; }
 #lb .lb__x{ width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(20,20,24,.7); color:#fff; font-size:20px; cursor:pointer; flex:0 0 auto; }
 
 /* case study reveal */
-.js .cs-reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
+.js .cs-reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform 1s cubic-bezier(.2,.8,.2,1); animation:bndRevealSafety .01s linear 2.4s forwards; }
 .js .cs-reveal.is-visible{ opacity:1; transform:none; }
-.js .cs-fade{ opacity:0; transition:opacity .8s ease; } .js .cs-fade.is-visible{ opacity:1; }
+.js .cs-fade{ opacity:0; transition:opacity .8s ease; animation:bndRevealSafety .01s linear 2.4s forwards; } .js .cs-fade.is-visible{ opacity:1; }
